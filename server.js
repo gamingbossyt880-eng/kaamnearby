@@ -9,6 +9,7 @@ const Profile = require("./module/Profile");
 
 const app = express();
 const PORT = 5000;
+require("dotenv").config();
 
 app.use(express.json());
 
@@ -41,7 +42,7 @@ app.use(express.json());
 // MONGODB CONNECTION
 // ================================
 
-const MONGO_URI =("mongodb+srv://gamingbossyt880_db_user:Abhijain2007@cluster0.q3cqyh5.mongodb.net/kaamnearby")
+const MONGO_URI = process.env.MONGO_URI;
 
 mongoose.connect(MONGO_URI)
     .then(() => {
