@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Employer - Kaam Nearby</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+
+        <div class="logo">
+            Kaam Nearby
+        </div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="login.html">Logout</a>
+            <a href="employerjobs.html">My Jobs</a>
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <!-- EMPLOYER DASHBOARD -->
+
+        <div class="dashboard-card">
+
+            <h1>Employer Dashboard</h1>
+
+            <p>
+                Welcome to Kaam Nearby!
+            </p>
+
+            <p>
+                Post jobs and find suitable workers
+                for your shop or business.
+            </p>
+
+        </div>
+
+
+        <!-- POST JOB -->
+         <div class="register-box">
+
+    <h2>My Posted Jobs</h2>
+
+    <p>
+        View and manage all jobs posted by you.
+    </p>
+
+    <button onclick="window.location.href='employerjobs.html'">
+        View My Jobs
+    </button>
+
+</div>
+
+        <div class="register-box">
+
+            <h1>Post a Job</h1>
+
+            <form id="jobForm">
+
+                <input
+                    type="text"
+                    id="jobTitle"
+                    placeholder="Job Title"
+                    required
+                >
+
+                <input
+                    type="text"
+                    id="shopName"
+                    placeholder="Shop / Business Name"
+                    required
+                >
+
+                <input
+                    type="text"
+                    id="location"
+                    placeholder="Job Location"
+                    required
+                >
+
+                <input
+                    type="text"
+                    id="salary"
+                    placeholder="Salary (e.g. ₹12,000/month)"
+                    required
+                >
+
+                <input
+                    type="text"
+                    id="workingHours"
+                    placeholder="Working Hours (e.g. 9 AM - 6 PM)"
+                    required
+                >
+
+                <textarea
+                    id="description"
+                    placeholder="Describe the job"
+                    rows="5"
+                    required
+                ></textarea>
+
+                <button type="submit">
+                    Post Job
+                </button>
+
+            </form>
+
+            <p id="message"></p>
+
+        </div>
+
+
+        <!-- EMPLOYER ACTIONS -->
+
+        <div class="dashboard-card">
+
+            <h2>Manage Applications</h2>
+
+            <p>
+                Check applications received from job seekers.
+            </p>
+
+            <button
+                type="button"
+                onclick="location.href='application.html'">
+                View Applications
+            </button>
+
+        </div>
+
+    </main>
+
+
+    <script src="postjob.js"></script>
+
+</body>
+
+</html>

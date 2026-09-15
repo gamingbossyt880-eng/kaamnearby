@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Kaam Nearby</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="register-box">
+
+        <h1>Create Account</h1>
+
+        <form id="registerForm">
+
+            <input type="text" id="name" placeholder="Enter your name" required>
+
+            <input type="email" id="email" placeholder="Enter your email" required>
+
+            <input type="password" id="password" placeholder="Enter your password" required>
+
+            <select id="role" required>
+                <option value="">Select Account Type</option>
+                <option value="jobseeker">Job Seeker</option>
+                <option value="employer">Employer</option>
+            </select>
+
+            <button type="submit">Register</button>
+
+        </form>
+
+        <p id="message"></p>
+
+    </div>
+
+    <script src="register.js"></script>
+
+</body>
+</html>

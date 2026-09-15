@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>My Profile - Kaam Nearby</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+
+<body>
+
+    <header>
+
+        <div class="logo">
+            Kaam Nearby
+        </div>
+
+        <nav>
+
+            <a href="jobseeker.html">
+                Home
+            </a>
+
+            <a href="myapplications.html">
+                My Applications
+            </a>
+
+            <a href="login.html">
+                Logout
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <div class="register-box">
+
+            <h1>My Profile</h1>
+
+
+            <form id="profileForm">
+
+
+                <label>
+                    Name
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    required
+                >
+
+
+                <label>
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    readonly
+                >
+
+
+                <label>
+                    Phone
+                </label>
+
+                <input
+                    type="text"
+                    id="phone"
+                    placeholder="Enter phone number"
+                    required
+                >
+
+
+                <label>
+                    Skills
+                </label>
+
+                <input
+                    type="text"
+                    id="skills"
+                    placeholder="Example: Driving, Computer, Sales"
+                    required
+                >
+
+
+                <label>
+                    Experience
+                </label>
+
+                <input
+                    type="text"
+                    id="experience"
+                    placeholder="Example: 2 years"
+                    required
+                >
+
+
+                <label>
+                    Location
+                </label>
+
+                <input
+                    type="text"
+                    id="location"
+                    placeholder="Enter your location"
+                    required
+                >
+
+
+                <button type="submit">
+                    Save Profile
+                </button>
+
+
+            </form>
+
+
+            <p id="message"></p>
+
+        </div>
+
+    </main>
+
+
+    <script src="profile.js"></script>
+
+</body>
+
+</html>

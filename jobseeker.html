@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Job Seeker - Kaam Nearby</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+
+        <div class="logo">
+            Kaam Nearby
+        </div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="login.html">Logout</a>
+        </nav>
+
+    </header>
+
+    <main>
+
+        <div class="dashboard-card">
+
+    <h1>Job Seeker Dashboard</h1>
+
+    <h3>Find Work Near You</h3>
+
+    <p>
+        Find shops and businesses looking for workers
+        in your nearby area.
+    </p>
+
+    <div class="dashboard-buttons">
+
+        <button
+            type="button"
+            onclick="document.getElementById('jobsContainer').scrollIntoView({behavior:'smooth'})">
+            Find Nearby Jobs
+        </button>
+
+        <button
+            type="button"
+            onclick="location.href='application.html'">
+            My Applications
+        </button>
+
+    </div>
+
+</div>
+
+
+        
+
+
+            <!-- SEARCH AND LOCATION -->
+
+            <div class="search-box">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search jobs by title or shop..."
+                >
+
+                <input
+                    type="text"
+                    id="locationInput"
+                    placeholder="Enter location..."
+                >
+
+                <button id="searchBtn">
+                    Search
+                </button>
+                <button id="clearBtn">
+                    Clear
+                 </button>
+
+            </div>
+
+
+            <!-- JOBS CONTAINER -->
+
+            <div id="jobsContainer">
+
+                <p>Loading jobs...</p>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <script src="jobs.js"></script>
+
+</body>
+
+</html>
