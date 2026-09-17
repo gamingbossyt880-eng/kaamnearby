@@ -7,7 +7,7 @@ const Job = require("./Job");
 const Application = require("./Application");
 const Profile = require("./Profile");
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 require("dotenv").config();
 
 app.use(express.json());
@@ -955,7 +955,5 @@ app.put("/api/jobs/:id", async (req, res) => {
 // ===============================
 
 app.listen(PORT, () => {
-
-    console.log(`Server running on http://localhost:${PORT}`);
-
+    console.log(`Server running on port ${PORT}`);
 });
