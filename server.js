@@ -2,11 +2,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 
-const User = require("./module/User");
-const Job = require("./module/Job");
-const Application = require("./module/Application");
-const Profile = require("./module/Profile");
-
+const User = require("./User");
+const Job = require("./Job");
+const Application = require("./Application");
+const Profile = require("./Profile");
 const app = express();
 const PORT = 5000;
 require("dotenv").config();
