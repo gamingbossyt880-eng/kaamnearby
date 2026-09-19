@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             const response = await fetch(
-                "http://localhost:5000/api/applications/job/" +
+                "https://kaamnearby.onrender.com/api/applications/job/" +
                 encodeURIComponent(jobId)
             );
 
@@ -346,7 +346,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const response =
                 await fetch(
-                    "http://localhost:5000/api/profile?email=" +
+                    "https://kaamnearby.onrender.com/api/profile?email=" +
                     encodeURIComponent(email)
                 );
 
@@ -453,7 +453,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const response =
                 await fetch(
-                    "http://localhost:5000/api/applications/" +
+                    "https://kaamnearby.onrender.com/api/applications/" +
                     applicationId,
                     {
                         method: "PUT",

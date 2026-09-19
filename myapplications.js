@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     try {
 
         const response = await fetch(
-            "http://localhost:5000/api/applications?email=" +
+            "https://kaamnearby.onrender.com/api/applications?email=" +
             encodeURIComponent(email)
         );
 

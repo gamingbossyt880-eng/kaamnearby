@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             const response =
                 await fetch(
-                    "http://localhost:5000/api/jobs"
+                    "https://kaamnearby.onrender.com/api/jobs"
                 );
 
             if (!response.ok) {
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             const applicationResponse =
                 await fetch(
-                    "http://localhost:5000/api/applications?email=" +
+                    "https://kaamnearby.onrender.com/api/applications?email=" +
                     encodeURIComponent(
                         applicantEmail
                     )
@@ -259,7 +259,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                             const response =
                                 await fetch(
-                                    "http://localhost:5000/api/apply",
+                                    "https://kaamnearby.onrender.com/api/apply",
                                     {
                                         method: "POST",
 

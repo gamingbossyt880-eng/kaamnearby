@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         const response =
             await fetch(
-                "http://localhost:5000/api/profile?email=" +
+                "https://kaamnearby.onrender.com/api/profile?email=" +
                 encodeURIComponent(userEmail)
             );
 
@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                 const response =
                     await fetch(
-                        "http://localhost:5000/api/profile",
+                        "https://kaamnearby.onrender.com/api/profile",
                         {
                             method: "POST",
 

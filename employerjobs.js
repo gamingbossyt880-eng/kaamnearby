@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const response =
                 await fetch(
-                    "http://localhost:5000/api/jobs"
+                    "https://kaamnearby.onrender.com/api/jobs"
                 );
 
             if (!response.ok) {
@@ -226,7 +226,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                             const response =
                                 await fetch(
-                                    "http://localhost:5000/api/jobs/" +
+                                    "https://kaamnearby.onrender.com/api/jobs/" +
                                     jobId,
                                     {
                                         method: "DELETE"
