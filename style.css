@@ -658,3 +658,30 @@ nav a:hover {
 footer {
     background: linear-gradient(90deg, #1e3a8a, #4c1d95, #831843);
 }
+/* Fix Home Page Buttons */
+
+.buttons .hero-button {
+    display: inline-block;
+    text-decoration: none;
+    padding: 14px 30px;
+    margin: 10px;
+    border-radius: 30px;
+
+    background: linear-gradient(135deg, #2563eb, #7c3aed) !important;
+    color: white !important;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    box-shadow: 0 5px 15px rgba(37, 99, 235, 0.30);
+
+    transition: all 0.3s ease;
+}
+
+.buttons .hero-button:hover {
+    transform: translateY(-4px);
+
+    background: linear-gradient(135deg, #7c3aed, #db2777) !important;
+
+    box-shadow: 0 8px 20px rgba(124, 58, 237, 0.40);
+}
