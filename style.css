@@ -545,3 +545,116 @@ footer {
     color: #666;
     font-size: 15px;
 }
+/* ===== EXTRA COLOURFUL HOME PAGE ===== */
+
+body {
+    background: #f8fafc;
+}
+
+/* Header */
+header {
+    background: linear-gradient(90deg, #2563eb, #7c3aed, #db2777);
+}
+
+.logo {
+    color: #ffffff;
+}
+
+nav a {
+    color: #ffffff !important;
+    font-weight: 600;
+}
+
+nav a:hover {
+    color: #fde68a !important;
+}
+
+/* Hero */
+.hero {
+    background: linear-gradient(
+        135deg,
+        #dbeafe 0%,
+        #ede9fe 50%,
+        #fce7f3 100%
+    );
+    padding: 110px 20px;
+}
+
+.hero h1 {
+    color: #1e3a8a;
+    font-weight: 800;
+}
+
+.hero p {
+    color: #374151;
+}
+
+/* Home buttons */
+.hero-button {
+    display: inline-block;
+    text-decoration: none;
+    padding: 14px 28px;
+    margin: 10px;
+    border-radius: 30px;
+    background: linear-gradient(90deg, #2563eb, #7c3aed);
+    color: white !important;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.hero-button:hover {
+    transform: translateY(-4px);
+    background: linear-gradient(90deg, #7c3aed, #db2777);
+}
+
+/* Features */
+.features {
+    background: linear-gradient(180deg, #ffffff, #f5f3ff);
+}
+
+.feature {
+    border: none;
+    border-top: 5px solid #7c3aed;
+    border-radius: 18px;
+    transition: 0.3s;
+}
+
+.feature:nth-child(1) {
+    border-top-color: #2563eb;
+}
+
+.feature:nth-child(2) {
+    border-top-color: #7c3aed;
+}
+
+.feature:nth-child(3) {
+    border-top-color: #db2777;
+}
+
+.feature:hover {
+    transform: translateY(-8px);
+}
+
+/* Team */
+.team-section {
+    background: linear-gradient(
+        135deg,
+        #eff6ff,
+        #f5f3ff,
+        #fdf2f8
+    );
+}
+
+.team-card {
+    border-top: 5px solid #db2777;
+    border-radius: 20px;
+}
+
+.team-card img {
+    border: 5px solid #7c3aed;
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(90deg, #1e3a8a, #4c1d95, #831843);
+}
