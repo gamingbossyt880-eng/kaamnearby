@@ -426,6 +426,120 @@ footer {
     font-size: 22px;
     margin: 10px 0;
 }
+/* ===== Colourful Modern Design ===== */
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.logo {
+    color: white;
+    font-weight: bold;
+}
+
+nav a {
+    color: white;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #fde68a;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, #dbeafe, #ede9fe, #fce7f3);
+    border-radius: 0 0 35px 35px;
+}
+
+.hero h1 {
+    color: #1e3a8a;
+}
+
+.hero p {
+    color: #4b5563;
+}
+
+/* Buttons */
+.hero-button {
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    color: white;
+    border: none;
+    box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+    transition: 0.3s;
+}
+
+.hero-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(124, 58, 237, 0.4);
+}
+
+/* Features */
+.features {
+    background: #f8fafc;
+}
+
+.features h2 {
+    color: #1e3a8a;
+}
+
+.feature {
+    background: white;
+    border-radius: 18px;
+    border-top: 4px solid #7c3aed;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+    transition: 0.3s;
+}
+
+.feature:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(124, 58, 237, 0.18);
+}
+
+.feature h3 {
+    color: #2563eb;
+}
+
+/* Team Section */
+.team-section {
+    background: linear-gradient(135deg, #eff6ff, #f5f3ff);
+}
+
+.team-section h2 {
+    color: #1e3a8a;
+}
+
+.team-card {
+    border-top: 5px solid #7c3aed;
+    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.15);
+    transition: 0.3s;
+}
+
+.team-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(124, 58, 237, 0.25);
+}
+
+.team-card img {
+    border: 5px solid #7c3aed;
+}
+
+.team-card h3 {
+    color: #2563eb;
+}
+
+.team-card p {
+    color: #6b7280;
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(135deg, #1e3a8a, #4c1d95);
+    color: white;
+}
 
 .team-card p {
     color: #666;
