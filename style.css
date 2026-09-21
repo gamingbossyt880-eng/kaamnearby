@@ -847,3 +847,589 @@ body:has(.register-box) {
         font-size: 30px;
     }
 }
+/* =====================================================
+   MODERN EMPLOYER DASHBOARD
+   ===================================================== */
+
+.employer-page {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top left, #e0e7ff, transparent 35%),
+        radial-gradient(circle at bottom right, #fce7f3, transparent 35%),
+        #f8fafc;
+}
+
+
+/* =========================
+   EMPLOYER HEADER
+   ========================= */
+
+.employer-page .employer-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 18px 7%;
+
+    background: linear-gradient(
+        90deg,
+        #2563eb,
+        #7c3aed,
+        #db2777
+    );
+
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+
+.employer-page .employer-header .logo {
+    font-size: 27px;
+    font-weight: 800;
+    color: white;
+}
+
+.employer-page .employer-header nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.employer-page .employer-header nav a {
+    margin: 0;
+    color: white !important;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.employer-page .employer-header nav a:hover {
+    color: #fde68a !important;
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   MAIN
+   ========================= */
+
+.employer-main {
+    width: 90%;
+    max-width: 1150px;
+
+    margin: 0 auto;
+
+    padding: 45px 0 70px;
+}
+
+
+/* =========================
+   WELCOME
+   ========================= */
+
+.employer-welcome {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 45px;
+
+    border-radius: 28px;
+
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #4f46e5,
+        #7c3aed
+    );
+
+    color: white;
+
+    box-shadow:
+        0 15px 40px rgba(79,70,229,0.25);
+
+    margin-bottom: 28px;
+}
+
+.dashboard-label {
+    display: inline-block;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    color: #c7d2fe;
+
+    margin-bottom: 10px;
+}
+
+.employer-welcome h1 {
+    font-size: 38px;
+    margin-bottom: 12px;
+}
+
+.employer-welcome p {
+    max-width: 650px;
+
+    font-size: 17px;
+    line-height: 1.6;
+
+    color: #e0e7ff;
+}
+
+.welcome-icon {
+    width: 100px;
+    height: 100px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255,255,255,0.15);
+
+    border-radius: 25px;
+
+    font-size: 48px;
+
+    backdrop-filter: blur(10px);
+}
+
+
+/* =========================
+   QUICK ACTIONS
+   ========================= */
+
+.quick-actions {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 25px;
+
+    margin-bottom: 30px;
+}
+
+.action-card {
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 28px;
+
+    background: white;
+
+    border-radius: 22px;
+
+    border: 1px solid #e5e7eb;
+
+    box-shadow: 0 8px 25px rgba(0,0,0,0.07);
+
+    transition: 0.3s;
+}
+
+.action-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 15px 35px rgba(79,70,229,0.15);
+}
+
+.action-icon {
+    min-width: 65px;
+    height: 65px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 18px;
+
+    font-size: 30px;
+}
+
+.action-icon.blue {
+    background: #dbeafe;
+}
+
+.action-icon.purple {
+    background: #ede9fe;
+}
+
+.action-card h2 {
+    margin-bottom: 7px;
+
+    color: #1e293b;
+
+    font-size: 21px;
+}
+
+.action-card p {
+    color: #64748b;
+
+    line-height: 1.5;
+
+    margin-bottom: 12px;
+}
+
+.action-card button {
+    margin: 0;
+
+    padding: 10px 18px;
+
+    border-radius: 10px;
+
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #7c3aed
+    );
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    box-shadow: none;
+}
+
+.action-card button:hover {
+    background: linear-gradient(
+        135deg,
+        #7c3aed,
+        #db2777
+    );
+}
+
+
+/* =========================
+   POST JOB CARD
+   ========================= */
+
+.post-job-section {
+    background: white;
+
+    padding: 40px;
+
+    border-radius: 28px;
+
+    border: 1px solid #e5e7eb;
+
+    box-shadow:
+        0 10px 35px rgba(0,0,0,0.07);
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 30px;
+}
+
+.section-heading h2 {
+    font-size: 30px;
+
+    color: #1e3a8a;
+
+    margin-bottom: 8px;
+}
+
+.section-heading p {
+    color: #64748b;
+}
+
+.form-icon {
+    width: 65px;
+    height: 65px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 18px;
+
+    background: linear-gradient(
+        135deg,
+        #dbeafe,
+        #ede9fe
+    );
+
+    font-size: 30px;
+}
+
+
+/* =========================
+   FORM
+   ========================= */
+
+.job-form {
+    width: 100%;
+}
+
+.form-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 22px;
+}
+
+.form-group {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    font-size: 14px;
+
+    font-weight: 700;
+
+    color: #334155;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+
+    padding: 15px 17px;
+
+    border: 2px solid #e2e8f0;
+
+    border-radius: 13px;
+
+    background: #f8fafc;
+
+    font-size: 15px;
+
+    font-family: Arial, sans-serif;
+
+    outline: none;
+
+    transition: 0.3s;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    background: white;
+
+    border-color: #7c3aed;
+
+    box-shadow:
+        0 0 0 4px rgba(124,58,237,0.10);
+}
+
+
+/* =========================
+   POST BUTTON
+   ========================= */
+
+.post-job-button {
+    width: 100%;
+
+    margin: 28px 0 0;
+
+    padding: 16px;
+
+    border: none;
+
+    border-radius: 13px;
+
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #7c3aed,
+        #db2777
+    );
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px rgba(79,70,229,0.25);
+
+    transition: 0.3s;
+}
+
+.post-job-button:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 28px rgba(124,58,237,0.35);
+}
+
+
+/* =========================
+   MESSAGE
+   ========================= */
+
+.employer-page #message {
+    text-align: center;
+
+    margin-top: 18px;
+
+    font-weight: 600;
+}
+
+
+/* =========================
+   INFO
+   ========================= */
+
+.employer-info {
+    margin-top: 28px;
+
+    padding: 25px 30px;
+
+    background: linear-gradient(
+        135deg,
+        #eff6ff,
+        #f5f3ff
+    );
+
+    border-radius: 20px;
+
+    border: 1px solid #e0e7ff;
+}
+
+.employer-info > div {
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+}
+
+.employer-info span {
+    font-size: 32px;
+}
+
+.employer-info h3 {
+    color: #1e3a8a;
+
+    margin-bottom: 5px;
+}
+
+.employer-info p {
+    color: #64748b;
+
+    line-height: 1.5;
+}
+
+
+/* =====================================================
+   IMPORTANT FIX
+   Login/Register CSS should NOT control employer page
+   ===================================================== */
+
+.employer-page .register-box {
+    display: block;
+
+    width: auto;
+    max-width: none;
+
+    padding: 0;
+
+    background: transparent;
+
+    border: none;
+
+    box-shadow: none;
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 768px) {
+
+    .employer-page .employer-header {
+        flex-direction: column;
+
+        gap: 15px;
+
+        padding: 18px 20px;
+    }
+
+    .employer-page .employer-header nav {
+        gap: 18px;
+    }
+
+    .employer-main {
+        width: 94%;
+
+        padding: 25px 0 50px;
+    }
+
+    .employer-welcome {
+        padding: 30px 25px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 25px;
+    }
+
+    .employer-welcome h1 {
+        font-size: 30px;
+    }
+
+    .welcome-icon {
+        width: 70px;
+        height: 70px;
+
+        font-size: 34px;
+    }
+
+    .quick-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .action-card {
+        padding: 22px;
+    }
+
+    .post-job-section {
+        padding: 25px 20px;
+    }
+
+    .section-heading {
+        align-items: flex-start;
+    }
+
+    .section-heading h2 {
+        font-size: 25px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group.full-width {
+        grid-column: auto;
+    }
+
+    .form-icon {
+        display: none;
+    }
+}
