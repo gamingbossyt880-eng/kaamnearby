@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard - Kaam Nearby</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="admin-page">
+
+    <header class="admin-header">
+
+        <div class="logo">
+            Kaam Nearby
+        </div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="login.html" onclick="logoutAdmin()">Logout</a>
+        </nav>
+
+    </header>
+
+
+    <main class="admin-main">
+
+        <section class="admin-welcome">
+
+            <div>
+                <span class="admin-label">ADMIN DASHBOARD</span>
+
+                <h1>Welcome, Admin 👋</h1>
+
+                <p>
+                    Manage users, jobs and activities of Kaam Nearby
+                    from one place.
+                </p>
+            </div>
+
+            <div class="admin-icon">
+                🛡️
+            </div>
+
+        </section>
+
+
+        <section class="admin-cards">
+
+            <div class="admin-card">
+
+                <div class="admin-card-icon">
+                    👥
+                </div>
+
+                <h2>Users</h2>
+
+                <p>
+                    Manage registered job seekers and employers.
+                </p>
+
+                <button onclick="showMessage('User management will be added next.')">
+                    Manage Users →
+                </button>
+
+            </div>
+
+
+            <div class="admin-card">
+
+                <div class="admin-card-icon">
+                    💼
+                </div>
+
+                <h2>Jobs</h2>
+
+                <p>
+                    View and manage jobs posted on the platform.
+                </p>
+
+                <button onclick="showMessage('Job management will be added next.')">
+                    Manage Jobs →
+                </button>
+
+            </div>
+
+
+            <div class="admin-card">
+
+                <div class="admin-card-icon">
+                    📊
+                </div>
+
+                <h2>Platform</h2>
+
+                <p>
+                    View overall platform information and activity.
+                </p>
+
+                <button onclick="showMessage('Platform statistics will be added next.')">
+                    View Statistics →
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <section class="admin-info">
+
+            <h2>Admin Controls</h2>
+
+            <p>
+                You are logged in with administrator access.
+                More management features will be added here.
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        const userEmail = localStorage.getItem("userEmail");
+        const userRole = localStorage.getItem("userRole");
+
+        if (!userEmail || userRole !== "admin") {
+
+            alert("Admin access required.");
+
+            window.location.href = "login.html";
+        }
+
+
+        function logoutAdmin() {
+
+            localStorage.removeItem("userName");
+            localStorage.removeItem("userEmail");
+            localStorage.removeItem("userRole");
+
+        }
+
+
+        function showMessage(message) {
+
+            alert(message);
+
+        }
+
+    </script>
+
+</body>
+
+</html>
