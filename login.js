@@ -1,8 +1,5 @@
 const form = document.getElementById("loginForm");
-// Clear old login data when login page opens
-localStorage.removeItem("userName");
-localStorage.removeItem("userEmail");
-localStorage.removeItem("userRole");
+
 
 form.addEventListener("submit", async (event) => {
 
