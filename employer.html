@@ -5,14 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Employer - Kaam Nearby</title>
+    <title>Employer Dashboard - Kaam Nearby</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="employer-page">
 
-    <header>
+    <!-- NAVBAR -->
+    <header class="employer-header">
 
         <div class="logo">
             Kaam Nearby
@@ -20,124 +21,214 @@
 
         <nav>
             <a href="index.html">Home</a>
-            <a href="login.html">Logout</a>
             <a href="employerjobs.html">My Jobs</a>
+            <a href="login.html">Logout</a>
         </nav>
 
     </header>
 
 
-    <main>
+    <!-- MAIN DASHBOARD -->
+    <main class="employer-main">
 
-        <!-- EMPLOYER DASHBOARD -->
+        <!-- WELCOME SECTION -->
+        <section class="employer-welcome">
 
-        <div class="dashboard-card">
+            <div>
+                <span class="dashboard-label">EMPLOYER DASHBOARD</span>
 
-            <h1>Employer Dashboard</h1>
+                <h1>Find the Right Workers 👋</h1>
 
-            <p>
-                Welcome to Kaam Nearby!
-            </p>
+                <p>
+                    Post your job, manage applications and find
+                    suitable workers near your business.
+                </p>
+            </div>
 
-            <p>
-                Post jobs and find suitable workers
-                for your shop or business.
-            </p>
+            <div class="welcome-icon">
+                💼
+            </div>
 
-        </div>
+        </section>
 
 
-        <!-- POST JOB -->
-         <div class="register-box">
+        <!-- QUICK ACTIONS -->
+        <section class="quick-actions">
 
-    <h2>My Posted Jobs</h2>
+            <div class="action-card">
 
-    <p>
-        View and manage all jobs posted by you.
-    </p>
+                <div class="action-icon blue">
+                    📋
+                </div>
 
-    <button onclick="window.location.href='employerjobs.html'">
-        View My Jobs
-    </button>
+                <div>
+                    <h2>My Posted Jobs</h2>
 
-</div>
+                    <p>
+                        View, edit and manage your posted jobs.
+                    </p>
 
-        <div class="register-box">
+                    <button
+                        type="button"
+                        onclick="window.location.href='employerjobs.html'">
+                        View My Jobs →
+                    </button>
+                </div>
 
-            <h1>Post a Job</h1>
+            </div>
 
-            <form id="jobForm">
 
-                <input
-                    type="text"
-                    id="jobTitle"
-                    placeholder="Job Title"
-                    required
-                >
+            <div class="action-card">
 
-                <input
-                    type="text"
-                    id="shopName"
-                    placeholder="Shop / Business Name"
-                    required
-                >
+                <div class="action-icon purple">
+                    👥
+                </div>
 
-                <input
-                    type="text"
-                    id="location"
-                    placeholder="Job Location"
-                    required
-                >
+                <div>
+                    <h2>Applications</h2>
 
-                <input
-                    type="text"
-                    id="salary"
-                    placeholder="Salary (e.g. ₹12,000/month)"
-                    required
-                >
+                    <p>
+                        Check applications received from workers.
+                    </p>
 
-                <input
-                    type="text"
-                    id="workingHours"
-                    placeholder="Working Hours (e.g. 9 AM - 6 PM)"
-                    required
-                >
+                    <button
+                        type="button"
+                        onclick="window.location.href='employerjobs.html'">
+                        View Applications →
+                    </button>
+                </div>
 
-                <textarea
-                    id="description"
-                    placeholder="Describe the job"
-                    rows="5"
-                    required
-                ></textarea>
+            </div>
 
-                <button type="submit">
-                    Post Job
+        </section>
+
+
+        <!-- POST JOB SECTION -->
+        <section class="post-job-section">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="dashboard-label">CREATE OPPORTUNITY</span>
+
+                    <h2>Post a New Job</h2>
+
+                    <p>
+                        Enter the details below to find workers for your business.
+                    </p>
+                </div>
+
+                <div class="form-icon">
+                    ✨
+                </div>
+
+            </div>
+
+
+            <form id="jobForm" class="job-form">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label>Job Title</label>
+
+                        <input
+                            type="text"
+                            id="jobTitle"
+                            placeholder="e.g. Shop Helper"
+                            required>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Shop / Business Name</label>
+
+                        <input
+                            type="text"
+                            id="shopName"
+                            placeholder="e.g. Sharma General Store"
+                            required>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Job Location</label>
+
+                        <input
+                            type="text"
+                            id="location"
+                            placeholder="e.g. Greater Noida"
+                            required>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Salary</label>
+
+                        <input
+                            type="text"
+                            id="salary"
+                            placeholder="e.g. ₹12,000/month"
+                            required>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Working Hours</label>
+
+                        <input
+                            type="text"
+                            id="workingHours"
+                            placeholder="e.g. 9 AM - 6 PM"
+                            required>
+                    </div>
+
+
+                    <div class="form-group full-width">
+                        <label>Job Description</label>
+
+                        <textarea
+                            id="description"
+                            placeholder="Describe the work, requirements and responsibilities..."
+                            rows="5"
+                            required></textarea>
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="post-job-button">
+
+                    🚀 Post Job
+
                 </button>
 
             </form>
 
             <p id="message"></p>
 
-        </div>
+        </section>
 
 
-        <!-- EMPLOYER ACTIONS -->
+        <!-- BOTTOM INFO -->
+        <section class="employer-info">
 
-        <div class="dashboard-card">
+            <div>
+                <span>💡</span>
 
-            <h2>Manage Applications</h2>
+                <div>
+                    <h3>Hiring made simple</h3>
 
-            <p>
-                Check applications received from job seekers.
-            </p>
+                    <p>
+                        Connect with nearby workers and manage your hiring
+                        process from one place.
+                    </p>
+                </div>
+            </div>
 
-            <button
-                type="button"
-                onclick="location.href='application.html'">
-                View Applications
-            </button>
-
-        </div>
+        </section>
 
     </main>
 
