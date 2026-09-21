@@ -456,31 +456,61 @@
 
                     row.innerHTML = `
 
-                        <td>
-                            ${index + 1}
-                        </td>
+    <td>
+        ${index + 1}
+    </td>
 
-                        <td>
-                            <strong>
-                                ${user.name}
-                            </strong>
-                        </td>
+    <td>
+        <strong>
+            ${user.name}
+        </strong>
+    </td>
 
-                        <td>
-                            ${user.email}
-                        </td>
+    <td>
+        ${user.email}
+    </td>
 
-                        <td>
+    <td>
 
-                            <span
-                                class="role-badge ${roleClass}"
-                            >
-                                ${roleName}
-                            </span>
+        <span
+            class="role-badge ${roleClass}"
+        >
+            ${roleName}
+        </span>
 
-                        </td>
+    </td>
 
-                    `;
+    <td>
+
+        ${
+            user.role === "admin"
+
+            ? `<span style="
+                color:#be185d;
+                font-weight:bold;
+              ">
+                Protected
+              </span>`
+
+            : `<button
+                onclick="deleteUser('${user._id}', '${user.name}')"
+                style="
+                    background:#dc2626;
+                    color:white;
+                    border:none;
+                    padding:9px 14px;
+                    border-radius:8px;
+                    cursor:pointer;
+                    font-weight:bold;
+                "
+              >
+                🗑️ Delete
+              </button>`
+        }
+
+    </td>
+
+`;
 
 
                     tableBody.appendChild(row);
