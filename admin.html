@@ -8,9 +8,121 @@
     <title>Admin Dashboard - Kaam Nearby</title>
 
     <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        .users-section {
+            margin-top: 35px;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .users-section h2 {
+            color: #1e3a8a;
+            margin-bottom: 8px;
+        }
+
+        .users-section > p {
+            color: #6b7280;
+            margin-bottom: 25px;
+        }
+
+        .users-table-container {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        .users-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        .users-table th {
+            background: linear-gradient(90deg,#2563eb,#7c3aed);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .users-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e5e7eb;
+            color: #374151;
+        }
+
+        .users-table tr:hover {
+            background: #f8fafc;
+        }
+
+        .role-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .role-jobseeker {
+            background: #dbeafe;
+            color: #1d4ed8;
+        }
+
+        .role-employer {
+            background: #ede9fe;
+            color: #6d28d9;
+        }
+
+        .role-admin {
+            background: #fce7f3;
+            color: #be185d;
+        }
+
+        .loading-users {
+            text-align: center;
+            padding: 30px;
+            color: #6b7280;
+        }
+
+        .no-users {
+            text-align: center;
+            padding: 30px;
+            color: #6b7280;
+        }
+
+        .user-count {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 8px 15px;
+            background: #eff6ff;
+            color: #1d4ed8;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+
+            .users-section {
+                padding: 20px 15px;
+            }
+
+            .users-table {
+                min-width: 550px;
+            }
+
+        }
+
+    </style>
+
 </head>
 
+
 <body class="admin-page">
+
+
+    <!-- HEADER -->
 
     <header class="admin-header">
 
@@ -20,25 +132,39 @@
 
         <nav>
             <a href="index.html">Home</a>
-            <a href="login.html" onclick="logoutAdmin()">Logout</a>
+
+            <a href="login.html" onclick="logoutAdmin()">
+                Logout
+            </a>
         </nav>
 
     </header>
 
 
+    <!-- MAIN -->
+
     <main class="admin-main">
+
+
+        <!-- WELCOME -->
 
         <section class="admin-welcome">
 
             <div>
-                <span class="admin-label">ADMIN DASHBOARD</span>
 
-                <h1>Welcome, Admin 👋</h1>
+                <span class="admin-label">
+                    ADMIN DASHBOARD
+                </span>
+
+                <h1>
+                    Welcome, Admin 👋
+                </h1>
 
                 <p>
                     Manage users, jobs and activities of Kaam Nearby
                     from one place.
                 </p>
+
             </div>
 
             <div class="admin-icon">
@@ -48,7 +174,10 @@
         </section>
 
 
+        <!-- DASHBOARD CARDS -->
+
         <section class="admin-cards">
+
 
             <div class="admin-card">
 
@@ -56,14 +185,20 @@
                     👥
                 </div>
 
-                <h2>Users</h2>
+                <h2>
+                    Users
+                </h2>
 
                 <p>
-                    Manage registered job seekers and employers.
+                    View all registered users.
                 </p>
 
-                <button onclick="showMessage('User management will be added next.')">
-                    Manage Users →
+                <button
+                    type="button"
+                    onclick="document.getElementById('usersSection').scrollIntoView({behavior:'smooth'})">
+
+                    View Users →
+
                 </button>
 
             </div>
@@ -75,14 +210,20 @@
                     💼
                 </div>
 
-                <h2>Jobs</h2>
+                <h2>
+                    Jobs
+                </h2>
 
                 <p>
                     View and manage jobs posted on the platform.
                 </p>
 
-                <button onclick="showMessage('Job management will be added next.')">
+                <button
+                    type="button"
+                    onclick="alert('Job management will be added next.')">
+
                     Manage Jobs →
+
                 </button>
 
             </div>
@@ -94,64 +235,300 @@
                     📊
                 </div>
 
-                <h2>Platform</h2>
+                <h2>
+                    Platform
+                </h2>
 
                 <p>
-                    View overall platform information and activity.
+                    View platform information and activity.
                 </p>
 
-                <button onclick="showMessage('Platform statistics will be added next.')">
+                <button
+                    type="button"
+                    onclick="alert('Platform statistics will be added next.')">
+
                     View Statistics →
+
                 </button>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- USERS -->
+
+        <section
+            class="users-section"
+            id="usersSection"
+        >
+
+            <h2>
+                👥 Registered Users
+            </h2>
+
+            <p>
+                All users registered on Kaam Nearby.
+            </p>
+
+
+            <div
+                id="userCount"
+                class="user-count"
+            >
+                Loading users...
+            </div>
+
+
+            <div class="users-table-container">
+
+                <table class="users-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                #
+                            </th>
+
+                            <th>
+                                Name
+                            </th>
+
+                            <th>
+                                Email
+                            </th>
+
+                            <th>
+                                Role
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="usersTableBody">
+
+                        <tr>
+
+                            <td
+                                colspan="4"
+                                class="loading-users"
+                            >
+                                Loading users...
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
 
             </div>
 
         </section>
 
 
-        <section class="admin-info">
-
-            <h2>Admin Controls</h2>
-
-            <p>
-                You are logged in with administrator access.
-                More management features will be added here.
-            </p>
-
-        </section>
-
     </main>
 
 
     <script>
 
-        const userEmail = localStorage.getItem("userEmail");
-        const userRole = localStorage.getItem("userRole");
+        // ===============================
+        // ADMIN LOGIN CHECK
+        // ===============================
+
+        const userEmail =
+            localStorage.getItem("userEmail");
+
+        const userRole =
+            localStorage.getItem("userRole");
+
 
         if (!userEmail || userRole !== "admin") {
 
             alert("Admin access required.");
 
             window.location.href = "login.html";
+
         }
 
+
+        // ===============================
+        // LOGOUT
+        // ===============================
 
         function logoutAdmin() {
 
             localStorage.removeItem("userName");
+
             localStorage.removeItem("userEmail");
+
             localStorage.removeItem("userRole");
 
         }
 
 
-        function showMessage(message) {
+        // ===============================
+        // LOAD USERS
+        // ===============================
 
-            alert(message);
+        async function loadUsers() {
+
+            const tableBody =
+                document.getElementById("usersTableBody");
+
+            const userCount =
+                document.getElementById("userCount");
+
+
+            try {
+
+                const response = await fetch(
+                    "https://kaamnearby.onrender.com/api/admin/users"
+                );
+
+
+                const users = await response.json();
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        users.message || "Unable to load users"
+                    );
+
+                }
+
+
+                userCount.innerText =
+                    "Total Users: " + users.length;
+
+
+                if (users.length === 0) {
+
+                    tableBody.innerHTML = `
+                        <tr>
+                            <td colspan="4" class="no-users">
+                                No users registered yet.
+                            </td>
+                        </tr>
+                    `;
+
+                    return;
+
+                }
+
+
+                tableBody.innerHTML = "";
+
+
+                users.forEach((user, index) => {
+
+                    let roleClass = "role-jobseeker";
+
+                    let roleName = "Job Seeker";
+
+
+                    if (user.role === "employer") {
+
+                        roleClass = "role-employer";
+
+                        roleName = "Employer";
+
+                    }
+
+
+                    if (user.role === "admin") {
+
+                        roleClass = "role-admin";
+
+                        roleName = "Admin";
+
+                    }
+
+
+                    const row = document.createElement("tr");
+
+
+                    row.innerHTML = `
+
+                        <td>
+                            ${index + 1}
+                        </td>
+
+                        <td>
+                            <strong>
+                                ${user.name}
+                            </strong>
+                        </td>
+
+                        <td>
+                            ${user.email}
+                        </td>
+
+                        <td>
+
+                            <span
+                                class="role-badge ${roleClass}"
+                            >
+                                ${roleName}
+                            </span>
+
+                        </td>
+
+                    `;
+
+
+                    tableBody.appendChild(row);
+
+                });
+
+
+            } catch (error) {
+
+                console.error(
+                    "LOAD USERS ERROR:",
+                    error
+                );
+
+
+                userCount.innerText =
+                    "Unable to load users";
+
+
+                tableBody.innerHTML = `
+
+                    <tr>
+
+                        <td
+                            colspan="4"
+                            class="no-users"
+                        >
+
+                            ❌ Unable to load users.
+                            Please try again later.
+
+                        </td>
+
+                    </tr>
+
+                `;
+
+            }
 
         }
 
+
+        // Load users when page opens
+
+        loadUsers();
+
     </script>
+
 
 </body>
 
