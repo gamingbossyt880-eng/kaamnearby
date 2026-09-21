@@ -1,22 +1,45 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+    // ==============================
+    // CHECK LOGIN + EMPLOYER ROLE
+    // ==============================
+
+    const userEmail = localStorage.getItem("userEmail");
+    const userRole = localStorage.getItem("userRole");
+
+    // Not logged in
+    if (!userEmail) {
+
+        alert("Please login first.");
+
+        window.location.href = "login.html";
+
+        return;
+    }
+
+    // Logged in but NOT employer
+    if (userRole !== "employer") {
+
+        alert("Only employers can post jobs.");
+
+        window.location.href = "jobseeker.html";
+
+        return;
+    }
+
+
+    // ==============================
+    // JOB FORM
+    // ==============================
+
     const form = document.getElementById("jobForm");
     const message = document.getElementById("message");
+
 
     form.addEventListener("submit", async (event) => {
 
         event.preventDefault();
 
-        const employerEmail =
-            localStorage.getItem("userEmail");
-
-        if (!employerEmail) {
-
-            message.innerText =
-                "Please login as employer first.";
-
-            return;
-        }
 
         const jobData = {
 
@@ -38,10 +61,9 @@ document.addEventListener("DOMContentLoaded", () => {
             description:
                 document.getElementById("description").value.trim(),
 
-            employerEmail: employerEmail
+            employerEmail: userEmail
         };
 
-        console.log("Sending job:", jobData);
 
         try {
 
@@ -58,9 +80,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             );
 
+
             const data = await response.json();
 
-            console.log("Server response:", data);
 
             if (response.ok) {
 
@@ -72,10 +94,10 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
 
                 message.innerText =
-                    data.message ||
-                    "Failed to post job";
+                    data.message || "Failed to post job";
 
             }
+
 
         } catch (error) {
 
