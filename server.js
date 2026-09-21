@@ -261,6 +261,55 @@ app.post("/api/jobs", async (req, res) => {
 
 });
 // ===============================
+// CREATE ADMIN ACCOUNT
+// ===============================
+
+app.post("/api/create-admin", async (req, res) => {
+
+    try {
+
+        const { name, email, password } = req.body;
+
+        if (!name || !email || !password) {
+            return res.status(400).json({
+                message: "Please fill all fields"
+            });
+        }
+
+        const existingUser = await User.findOne({ email });
+
+        if (existingUser) {
+            return res.status(400).json({
+                message: "This email is already registered"
+            });
+        }
+
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        const admin = new User({
+            name: name,
+            email: email,
+            password: hashedPassword,
+            role: "admin"
+        });
+
+        await admin.save();
+
+        res.status(201).json({
+            message: "Admin account created successfully!"
+        });
+
+    } catch (error) {
+
+        console.log("CREATE ADMIN ERROR:", error);
+
+        res.status(500).json({
+            message: "Server error"
+        });
+    }
+
+});
+// ===============================
 // APPLY FOR JOB
 // ===============================
 
