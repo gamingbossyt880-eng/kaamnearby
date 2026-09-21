@@ -261,6 +261,30 @@ app.post("/api/jobs", async (req, res) => {
 
 });
 // ===============================
+// ADMIN - GET ALL USERS
+// ===============================
+
+app.get("/api/admin/users", async (req, res) => {
+
+    try {
+
+        const users = await User.find()
+            .select("-password")
+            .sort({ _id: -1 });
+
+        res.json(users);
+
+    } catch (error) {
+
+        console.log("ADMIN USERS ERROR:", error);
+
+        res.status(500).json({
+            message: "Unable to load users"
+        });
+    }
+
+});
+// ===============================
 // CREATE ADMIN ACCOUNT
 // ===============================
 
