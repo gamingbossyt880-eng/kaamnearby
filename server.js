@@ -1063,6 +1063,30 @@ app.delete("/api/admin/users/:id", async (req, res) => {
 
 });
 // ===============================
+// ADMIN - GET ALL JOBS
+// ===============================
+
+app.get("/api/admin/jobs", async (req, res) => {
+
+    try {
+
+        const jobs = await Job.find()
+            .sort({ _id: -1 });
+
+        res.json(jobs);
+
+    } catch (error) {
+
+        console.log("ADMIN JOBS ERROR:", error);
+
+        res.status(500).json({
+            message: "Unable to load jobs"
+        });
+
+    }
+
+});
+// ===============================
 // START SERVER
 // ===============================
 
