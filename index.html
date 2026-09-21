@@ -143,7 +143,24 @@
 
 
     <script src="script.js"></script>
+<script>
+function checkLogin(event, page) {
 
+    const userEmail = localStorage.getItem("userEmail");
+
+    if (!userEmail) {
+        event.preventDefault();
+
+        alert("Please login first to continue.");
+
+        window.location.href = "login.html";
+
+        return;
+    }
+
+    window.location.href = page;
+}
+</script>
 </body>
 
 </html>
