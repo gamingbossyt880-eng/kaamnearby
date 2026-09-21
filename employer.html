@@ -231,7 +231,21 @@
         </section>
 
     </main>
+<script>
+    const userEmail = localStorage.getItem("userEmail");
+    const userRole = localStorage.getItem("userRole");
 
+    if (!userEmail) {
+        alert("Please login first.");
+        window.location.href = "login.html";
+    } 
+    else if (userRole !== "employer") {
+        alert("Only employers can access this page.");
+        window.location.href = "jobseeker.html";
+    }
+</script>
+
+<script src="postjob.js"></script>
 
     <script src="postjob.js"></script>
 
