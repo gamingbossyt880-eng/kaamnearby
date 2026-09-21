@@ -685,3 +685,165 @@ footer {
 
     box-shadow: 0 8px 20px rgba(124, 58, 237, 0.40);
 }
+/* =================================
+   PROFESSIONAL LOGIN / REGISTER PAGE
+   ================================= */
+
+body:has(.register-box) {
+    min-height: 100vh;
+    background: linear-gradient(
+        135deg,
+        #dbeafe,
+        #ede9fe,
+        #fce7f3
+    );
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Login / Register Card */
+.register-box {
+    width: 420px;
+    max-width: 90%;
+    background: rgba(255, 255, 255, 0.95);
+
+    padding: 40px;
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 20px 50px rgba(37, 99, 235, 0.18);
+
+    text-align: center;
+
+    border: 1px solid rgba(124, 58, 237, 0.15);
+}
+
+/* Heading */
+.register-box h1 {
+    margin-bottom: 30px;
+
+    font-size: 36px;
+
+    color: #1e3a8a;
+}
+
+/* Inputs */
+.register-box input,
+.register-box select {
+    width: 100%;
+
+    padding: 15px 16px;
+
+    margin-bottom: 16px;
+
+    border: 2px solid #e5e7eb;
+
+    border-radius: 12px;
+
+    font-size: 16px;
+
+    background: #f9fafb;
+
+    outline: none;
+
+    transition: 0.3s;
+}
+
+/* Input focus */
+.register-box input:focus,
+.register-box select:focus {
+    border-color: #7c3aed;
+
+    background: white;
+
+    box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.10);
+}
+
+/* Login / Register Button */
+.register-box button {
+    width: 100%;
+
+    padding: 15px;
+
+    margin-top: 8px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #7c3aed
+    );
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+    box-shadow: 0 8px 18px rgba(37, 99, 235, 0.25);
+}
+
+/* Button hover */
+.register-box button:hover {
+    transform: translateY(-3px);
+
+    background: linear-gradient(
+        135deg,
+        #7c3aed,
+        #db2777
+    );
+
+    box-shadow: 0 12px 25px rgba(124, 58, 237, 0.30);
+}
+
+/* Message */
+#message {
+    margin-top: 18px;
+
+    font-size: 15px;
+
+    color: #dc2626;
+}
+
+/* Register link */
+.register-box a {
+    color: #7c3aed;
+
+    font-weight: 600;
+
+    text-decoration: none;
+}
+
+.register-box a:hover {
+    color: #db2777;
+
+    text-decoration: underline;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+
+    body:has(.register-box) {
+        padding: 20px;
+    }
+
+    .register-box {
+        width: 100%;
+        padding: 30px 22px;
+        border-radius: 20px;
+    }
+
+    .register-box h1 {
+        font-size: 30px;
+    }
+}
