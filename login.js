@@ -45,15 +45,15 @@ form.addEventListener("submit", async (event) => {
     );
 
             // Check user role
-            if (data.role === "jobseeker") {
+           if (data.role === "jobseeker") {
+    window.location.href = "jobseeker.html";
 
-                window.location.href = "jobseeker.html";
+} else if (data.role === "employer") {
+    window.location.href = "employer.html";
 
-            } else if (data.role === "employer") {
-
-                window.location.href = "employer.html";
-
-            }
+} else if (data.role === "admin") {
+    window.location.href = "admin.html";
+}
 
         } else {
 
