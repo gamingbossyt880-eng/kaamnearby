@@ -60,7 +60,6 @@ app.get("/api/test", (req, res) => {
     });
 });
 
-
 // ===============================
 // REGISTER USER
 // ===============================
@@ -69,11 +68,18 @@ app.post("/api/register", async (req, res) => {
 
     try {
 
-        const { name, email, password, role } = req.body;
+        const {
+            name,
+            email,
+            password,
+            role,
+            deviceId
+        } = req.body;
 
 
-        // Check empty fields
-        if (!name || !email || !password || !role) {
+        // Check required fields
+
+        if (!name || !email || !password || !role || !deviceId) {
 
             return res.status(400).json({
                 message: "Please fill all fields"
@@ -82,8 +88,22 @@ app.post("/api/register", async (req, res) => {
         }
 
 
-        // Check if email already exists
-        const existingUser = await User.findOne({ email });
+        // Public users can only select these roles
+
+        if (role !== "jobseeker" && role !== "employer") {
+
+            return res.status(400).json({
+                message: "Invalid account type"
+            });
+
+        }
+
+
+        // Check email
+
+        const existingUser = await User.findOne({
+            email: email
+        });
 
         if (existingUser) {
 
@@ -94,22 +114,47 @@ app.post("/api/register", async (req, res) => {
         }
 
 
+        // Check device
+
+        const existingDevice = await User.findOne({
+            deviceId: deviceId
+        });
+
+        if (existingDevice) {
+
+            return res.status(400).json({
+                message:
+                    "This device has already been used to create an account."
+            });
+
+        }
+
+
         // Hash password
-        const hashedPassword = await bcrypt.hash(password, 10);
+
+        const hashedPassword =
+            await bcrypt.hash(password, 10);
 
 
         // Create user
+
         const user = new User({
 
             name: name,
+
             email: email,
+
             password: hashedPassword,
-            role: role
+
+            role: role,
+
+            deviceId: deviceId
 
         });
 
 
         // Save user
+
         await user.save();
 
 
@@ -122,7 +167,7 @@ app.post("/api/register", async (req, res) => {
 
     } catch (error) {
 
-        console.log(error);
+        console.log("REGISTER ERROR:", error);
 
         res.status(500).json({
 
@@ -133,6 +178,8 @@ app.post("/api/register", async (req, res) => {
     }
 
 });
+
+       
 // Login API
 app.post("/api/login", async (req, res) => {
 
