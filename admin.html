@@ -522,6 +522,97 @@ async function deleteUser(userId, userName) {
     }
 
 }
+        // ===============================
+// ADMIN CREATE USER
+// ===============================
+
+document
+    .getElementById("adminCreateUserForm")
+    .addEventListener("submit", async function(event) {
+
+        event.preventDefault();
+
+        const name =
+            document.getElementById("adminUserName").value.trim();
+
+        const email =
+            document.getElementById("adminUserEmail").value.trim();
+
+        const password =
+            document.getElementById("adminUserPassword").value;
+
+        const role =
+            document.getElementById("adminUserRole").value;
+
+        const message =
+            document.getElementById("adminCreateMessage");
+
+
+        try {
+
+            const response = await fetch(
+                "https://kaamnearby.onrender.com/api/admin/create-user",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify({
+                        name: name,
+                        email: email,
+                        password: password,
+                        role: role
+                    })
+                }
+            );
+
+
+            const data = await response.json();
+
+
+            if (response.ok) {
+
+                message.innerText =
+                    "✅ " + data.message;
+
+                message.style.color = "green";
+
+
+                document
+                    .getElementById("adminCreateUserForm")
+                    .reset();
+
+
+                // Refresh users list
+                loadUsers();
+
+            } else {
+
+                message.innerText =
+                    "❌ " + (data.message || "Unable to create account");
+
+                message.style.color = "red";
+
+            }
+
+
+        } catch (error) {
+
+            console.error(
+                "ADMIN CREATE USER ERROR:",
+                error
+            );
+
+            message.innerText =
+                "❌ Backend connection failed.";
+
+            message.style.color = "red";
+
+        }
+
+    });
 
         // ===============================
         // LOAD USERS
