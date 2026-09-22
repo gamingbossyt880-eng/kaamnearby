@@ -1118,14 +1118,13 @@ app.post("/api/admin/create-user", async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        const user = new User({
-            name: name,
-            email: email,
-            password: hashedPassword,
-            role: role
-            // No deviceId because admin created this account
-        });
-
+       const user = new User({
+    name: name,
+    email: email,
+    password: hashedPassword,
+    role: role
+    // No deviceId because admin created this account
+});
         await user.save();
 
         res.status(201).json({
