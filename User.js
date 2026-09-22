@@ -20,16 +20,17 @@ const userSchema = new mongoose.Schema({
 
     role: {
         type: String,
-       enum: ["jobseeker", "employer", "admin"],
+        enum: ["jobseeker", "employer", "admin"],
         required: true
+    },
+
+    deviceId: {
+        type: String,
+        unique: true,
+        sparse: true
     }
 
 });
-deviceId: {
-    type: String,
-    unique: true,
-    sparse: true
-}
 
 const User = mongoose.model("User", userSchema);
 
