@@ -157,7 +157,7 @@
                 </span>
 
                 <h1>
-                    Welcome, Admin 👋
+                    Welcome, Abhi 👋
                 </h1>
 
                 <p>
@@ -263,6 +263,115 @@
             class="users-section"
             id="usersSection"
         >
+            <!-- ===============================
+     ADMIN CREATE USER
+================================ -->
+
+<section class="users-section">
+
+    <h2>➕ Create New Account</h2>
+
+    <p>
+        Admin can create unlimited Job Seeker and Employer accounts.
+    </p>
+
+    <form id="adminCreateUserForm">
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px;">
+
+            <input
+                type="text"
+                id="adminUserName"
+                placeholder="Enter name"
+                required
+                style="
+                    padding:13px;
+                    border:2px solid #e5e7eb;
+                    border-radius:10px;
+                    font-size:15px;
+                "
+            >
+
+            <input
+                type="email"
+                id="adminUserEmail"
+                placeholder="Enter email"
+                required
+                style="
+                    padding:13px;
+                    border:2px solid #e5e7eb;
+                    border-radius:10px;
+                    font-size:15px;
+                "
+            >
+
+            <input
+                type="password"
+                id="adminUserPassword"
+                placeholder="Enter password"
+                required
+                style="
+                    padding:13px;
+                    border:2px solid #e5e7eb;
+                    border-radius:10px;
+                    font-size:15px;
+                "
+            >
+
+            <select
+                id="adminUserRole"
+                required
+                style="
+                    padding:13px;
+                    border:2px solid #e5e7eb;
+                    border-radius:10px;
+                    font-size:15px;
+                "
+            >
+
+                <option value="">
+                    Select Account Type
+                </option>
+
+                <option value="jobseeker">
+                    Job Seeker
+                </option>
+
+                <option value="employer">
+                    Employer
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <button
+            type="submit"
+            style="
+                margin-top:20px;
+                padding:13px 25px;
+                border:none;
+                border-radius:10px;
+                background:linear-gradient(135deg,#2563eb,#7c3aed);
+                color:white;
+                font-size:16px;
+                font-weight:bold;
+                cursor:pointer;
+            "
+        >
+            ➕ Create Account
+        </button>
+
+    </form>
+
+
+    <p
+        id="adminCreateMessage"
+        style="margin-top:15px;"
+    ></p>
+
+</section>
 
             <h2>
                 👥 Registered Users
