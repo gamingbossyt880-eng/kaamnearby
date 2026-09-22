@@ -25,6 +25,11 @@ const userSchema = new mongoose.Schema({
     }
 
 });
+deviceId: {
+    type: String,
+    unique: true,
+    sparse: true
+}
 
 const User = mongoose.model("User", userSchema);
 
