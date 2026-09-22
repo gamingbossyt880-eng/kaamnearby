@@ -1087,6 +1087,63 @@ app.get("/api/admin/jobs", async (req, res) => {
 
 });
 // ===============================
+// ADMIN - CREATE USER
+// ===============================
+
+app.post("/api/admin/create-user", async (req, res) => {
+
+    try {
+
+        const { name, email, password, role } = req.body;
+
+        if (!name || !email || !password || !role) {
+            return res.status(400).json({
+                message: "Please fill all fields"
+            });
+        }
+
+        if (role !== "jobseeker" && role !== "employer") {
+            return res.status(400).json({
+                message: "Invalid account type"
+            });
+        }
+
+        const existingUser = await User.findOne({ email });
+
+        if (existingUser) {
+            return res.status(400).json({
+                message: "Email already registered"
+            });
+        }
+
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        const user = new User({
+            name: name,
+            email: email,
+            password: hashedPassword,
+            role: role
+            // No deviceId because admin created this account
+        });
+
+        await user.save();
+
+        res.status(201).json({
+            message: "User account created successfully!"
+        });
+
+    } catch (error) {
+
+        console.log("ADMIN CREATE USER ERROR:", error);
+
+        res.status(500).json({
+            message: "Server error"
+        });
+
+    }
+
+});
+// ===============================
 // START SERVER
 // ===============================
 
