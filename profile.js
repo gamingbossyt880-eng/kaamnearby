@@ -324,15 +324,79 @@ if (file.size > maxPhotoSize) {
     }
 
 
-    // ==========================================
-    // SAVE PROFILE
-    // ==========================================
+    try {
 
-    form.addEventListener(
-        "submit",
-        async (event) => {
+    message.innerText = "Saving profile...";
+    message.style.color = "#2563eb";
 
-            event.preventDefault();
+    const response = await fetch(
+        "https://kaamnearby.onrender.com/api/profile",
+        {
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify(profileData)
+        }
+    );
+
+    // Response ko pehle text ke form mein read karo
+    const responseText = await response.text();
+
+    console.log("SERVER STATUS:", response.status);
+    console.log("SERVER RESPONSE:", responseText);
+
+    let data = {};
+
+    try {
+        data = JSON.parse(responseText);
+    } catch (jsonError) {
+        console.error(
+            "SERVER DID NOT RETURN JSON:",
+            responseText
+        );
+    }
+
+    if (response.ok) {
+
+        message.innerText =
+            data.message ||
+            "Profile saved successfully!";
+
+        message.style.color = "green";
+
+        if (photoData && photoPreview) {
+            showPhotoPreview(photoData);
+        }
+
+    } else {
+
+        message.innerText =
+            data.message ||
+            "Server error: " + response.status;
+
+        message.style.color = "red";
+
+        console.error(
+            "PROFILE SAVE FAILED:",
+            responseText
+        );
+    }
+
+} catch (error) {
+
+    console.error(
+        "SAVE PROFILE ERROR:",
+        error
+    );
+
+    message.innerText =
+        "Cannot connect to server. Check Render backend.";
+
+    message.style.color = "red";
+}
 
 
             // ==================================
