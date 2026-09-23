@@ -2,15 +2,26 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Job Seeker - Kaam Nearby</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+          href="style.css">
+
 </head>
 
+
 <body>
+
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
 
     <header>
 
@@ -18,90 +29,240 @@
             Kaam Nearby
         </div>
 
+
         <nav>
-            <a href="index.html">Home</a>
-          <a href="#" onclick="logoutUser(); return false;">Logout</a>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="myapplications.html">
+                My Applications
+            </a>
+
+            <a href="profile.html">
+                My Profile
+            </a>
+
+            <a href="login.html">
+                Logout
+            </a>
+
         </nav>
 
     </header>
 
+
+
+    <!-- =========================================
+         MAIN
+    ========================================== -->
+
     <main>
+
+
+        <!-- =====================================
+             DASHBOARD INTRO
+        ====================================== -->
 
         <div class="dashboard-card">
 
-    <h1>Job Seeker Dashboard</h1>
 
-    <h3>Find Work Near You</h3>
-
-    <p>
-        Find shops and businesses looking for workers
-        in your nearby area.
-    </p>
-
-    <div class="dashboard-buttons">
-
-        <button
-            type="button"
-            onclick="document.getElementById('jobsContainer').scrollIntoView({behavior:'smooth'})">
-            Find Nearby Jobs
-        </button>
-
-        <button
-            type="button"
-            onclick="location.href='application.html'">
-            My Applications
-        </button>
-
-    </div>
-
-</div>
+            <h1>
+                Job Seeker Dashboard
+            </h1>
 
 
-        
+            <h3>
+                Find Work Near You
+            </h3>
 
 
-            <!-- SEARCH AND LOCATION -->
+            <p>
+                Find shops and businesses looking for
+                workers in your nearby area.
+            </p>
 
-            <div class="search-box">
 
-                <input
-                    type="text"
-                    id="searchInput"
-                    placeholder="Search jobs by title or shop..."
-                >
+            <div class="dashboard-buttons">
 
-                <input
-                    type="text"
-                    id="locationInput"
-                    placeholder="Enter location..."
-                >
 
-                <button id="searchBtn">
-                    Search
+                <button
+                    type="button"
+                    onclick="document.getElementById('jobsContainer').scrollIntoView({behavior:'smooth'})">
+
+                    Find Nearby Jobs
+
                 </button>
-                <button id="clearBtn">
-                    Clear
-                 </button>
+
+
+                <button
+                    type="button"
+                    onclick="location.href='myapplications.html'">
+
+                    My Applications
+
+                </button>
+
 
             </div>
 
-
-            <!-- JOBS CONTAINER -->
-
-            <div id="jobsContainer">
-
-                <p>Loading jobs...</p>
-
-            </div>
 
         </div>
-        <script src="jobs.js"></script>
-<script src="logout.js"></script>
+
+
+
+        <!-- =========================================
+             PROFILE COMPLETION SECTION
+        ========================================== -->
+
+        <section class="profile-status-section">
+
+
+            <div class="profile-status-card">
+
+
+                <!-- PROFILE ICON -->
+
+                <div class="profile-status-icon">
+
+                    👤
+
+                </div>
+
+
+
+                <!-- PROFILE CONTENT -->
+
+                <div class="profile-status-content">
+
+
+                    <h2>
+                        Complete Your Profile
+                    </h2>
+
+
+                    <p id="profileStatusText">
+
+                        Complete your profile to apply
+                        for jobs.
+
+                    </p>
+
+
+
+                    <!-- PROGRESS BAR -->
+
+                    <div class="profile-progress">
+
+                        <div
+                            id="profileProgressBar"
+                            class="profile-progress-bar">
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PROGRESS TEXT -->
+
+                    <p
+                        id="profileProgressText"
+                        class="profile-progress-text">
+
+                        Checking profile...
+
+                    </p>
+
+
+
+                    <!-- PROFILE BUTTON -->
+
+                    <button
+                        type="button"
+                        id="profileButton"
+                        onclick="window.location.href='profile.html'">
+
+                        Complete Profile →
+
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =========================================
+             SEARCH SECTION
+        ========================================== -->
+
+        <div class="search-box">
+
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search jobs by title or shop..."
+            >
+
+
+            <input
+                type="text"
+                id="locationInput"
+                placeholder="Enter location..."
+            >
+
+
+            <button
+                id="searchBtn">
+
+                Search
+
+            </button>
+
+
+            <button
+                id="clearBtn">
+
+                Clear
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- =========================================
+             JOBS SECTION
+        ========================================== -->
+
+        <section
+            id="jobsContainer">
+
+            <p>
+                Loading jobs...
+            </p>
+
+        </section>
+
 
     </main>
 
 
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
     <script src="jobs.js"></script>
+
 
 </body>
 
