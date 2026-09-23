@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 const User = require("./User");
 const Job = require("./Job");
@@ -185,13 +186,25 @@ app.post("/api/login", async (req, res) => {
 
     try {
 
-        const { email, password } = req.body;
+        const token = jwt.sign(
+    {
+        id: user._id,
+        email: user.email,
+        role: user.role
+    },
+    process.env.JWT_SECRET,
+    {
+        expiresIn: "7d"
+    }
+);
 
-        // Check empty fields
-        if (!email || !password) {
-            return res.status(400).json({
-                message: "Please enter email and password"
-            });
+res.json({
+    message: "Login successful!",
+    name: user.name,
+    email: user.email,
+    role: user.role,
+    token: token
+});
         }
 
         // Find user
