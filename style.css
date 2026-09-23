@@ -3552,3 +3552,115 @@ body:has(.register-box) {
     }
 
 }
+/* =========================
+   MEET THE DEVELOPER
+========================= */
+
+.team-section {
+    padding: 90px 8%;
+    background: #f8fafc;
+    text-align: center;
+}
+
+.team-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 45px;
+}
+
+.team-card {
+    width: 850px;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 45px;
+    text-align: left;
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 25px;
+    box-shadow: 0 15px 45px rgba(15, 23, 42, 0.10);
+    transition: 0.3s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 22px 55px rgba(15, 23, 42, 0.16);
+}
+
+.team-photo {
+    width: 220px;
+    height: 220px;
+    min-width: 220px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 7px solid #eff6ff;
+    box-shadow: 0 10px 30px rgba(37, 99, 235, 0.15);
+}
+
+.team-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.team-info h3 {
+    font-size: 30px;
+    margin: 0 0 8px;
+    color: #111827;
+}
+
+.team-role {
+    display: inline-block;
+    color: #2563eb;
+    font-weight: 700;
+    margin-bottom: 18px;
+}
+
+.team-info p {
+    color: #64748b;
+    line-height: 1.7;
+    margin-bottom: 22px;
+}
+
+.team-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.team-tags span {
+    padding: 8px 13px;
+    background: #eff6ff;
+    color: #2563eb;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .team-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 28px 20px;
+    }
+
+    .team-photo {
+        width: 180px;
+        height: 180px;
+        min-width: 180px;
+    }
+
+    .team-info h3 {
+        font-size: 26px;
+    }
+
+    .team-tags {
+        justify-content: center;
+    }
+
+}
