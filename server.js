@@ -255,7 +255,6 @@ app.post("/api/login", async (req, res) => {
     }
 
 });
-});
 app.get("/api/jobs", async (req, res) => {
     try {
         const jobs = await Job.find();
