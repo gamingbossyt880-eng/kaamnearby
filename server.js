@@ -181,34 +181,27 @@ app.post("/api/register", async (req, res) => {
 });
 
        
-// Login API
+// ===============================
+// LOGIN API
+// ===============================
+
 app.post("/api/login", async (req, res) => {
 
     try {
 
-        const token = jwt.sign(
-    {
-        id: user._id,
-        email: user.email,
-        role: user.role
-    },
-    process.env.JWT_SECRET,
-    {
-        expiresIn: "7d"
-    }
-);
+        const { email, password } = req.body;
 
-res.json({
-    message: "Login successful!",
-    name: user.name,
-    email: user.email,
-    role: user.role,
-    token: token
-});
+        // Check required fields
+        if (!email || !password) {
+            return res.status(400).json({
+                message: "Email and password are required"
+            });
         }
 
         // Find user
-        const user = await User.findOne({ email });
+        const user = await User.findOne({
+            email: email
+        });
 
         if (!user) {
             return res.status(400).json({
@@ -217,10 +210,11 @@ res.json({
         }
 
         // Check password
-        const isPasswordCorrect = await bcrypt.compare(
-            password,
-            user.password
-        );
+        const isPasswordCorrect =
+            await bcrypt.compare(
+                password,
+                user.password
+            );
 
         if (!isPasswordCorrect) {
             return res.status(400).json({
@@ -228,17 +222,31 @@ res.json({
             });
         }
 
+        // Create JWT token
+        const token = jwt.sign(
+            {
+                id: user._id,
+                email: user.email,
+                role: user.role
+            },
+            process.env.JWT_SECRET,
+            {
+                expiresIn: "7d"
+            }
+        );
+
         // Login successful
         res.json({
-    message: "Login successful!",
-    name: user.name,
-    email: user.email,
-    role: user.role
-});
+            message: "Login successful!",
+            name: user.name,
+            email: user.email,
+            role: user.role,
+            token: token
+        });
 
     } catch (error) {
 
-        console.log("Login Error:", error);
+        console.log("LOGIN ERROR:", error);
 
         res.status(500).json({
             message: "Server error"
@@ -246,6 +254,7 @@ res.json({
 
     }
 
+});
 });
 app.get("/api/jobs", async (req, res) => {
     try {
