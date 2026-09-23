@@ -34,6 +34,7 @@ form.addEventListener("submit", async (event) => {
     localStorage.setItem("userName", data.name);
     localStorage.setItem("userEmail", data.email);
     localStorage.setItem("userRole", data.role);
+    localStorage.setItem("token", data.token);
 
     alert(
         "Login data saved!\nName: " +
