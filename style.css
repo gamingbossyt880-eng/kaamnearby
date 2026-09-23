@@ -3962,3 +3962,529 @@ body:has(.register-box) {
 .profile-complete .profile-progress-bar {
     background: #16a34a;
 }
+/* =====================================================
+   MY PROFILE PAGE
+===================================================== */
+
+
+/* =========================================
+   PROFILE PAGE BACKGROUND
+========================================= */
+
+.profile-page {
+
+    margin: 0;
+
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eef4ff 0%,
+            #f7f1ff 50%,
+            #fff1f8 100%
+        );
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+}
+
+
+/* =========================================
+   PROFILE NAVBAR
+========================================= */
+
+.profile-header {
+
+    width: 100%;
+
+    min-height: 72px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 7%;
+
+    box-sizing: border-box;
+
+    background:
+        linear-gradient(
+            90deg,
+            #2563eb,
+            #7c3aed,
+            #db2777
+        );
+
+    color: white;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.12);
+
+}
+
+
+/* LOGO */
+
+.profile-logo {
+
+    font-size: 27px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.3px;
+
+}
+
+
+/* NAVIGATION */
+
+.profile-nav {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 30px;
+
+}
+
+
+.profile-nav a {
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+
+}
+
+
+.profile-nav a:hover {
+
+    opacity: 0.8;
+
+    transform: translateY(-1px);
+
+}
+
+
+/* =========================================
+   MAIN AREA
+========================================= */
+
+.profile-main {
+
+    min-height:
+        calc(100vh - 72px);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-start;
+
+    padding:
+        55px 20px 70px;
+
+    box-sizing: border-box;
+
+}
+
+
+/* =========================================
+   PROFILE CARD
+========================================= */
+
+.profile-card {
+
+    width: 100%;
+
+    max-width: 620px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        0.97
+    );
+
+    border-radius: 24px;
+
+    padding:
+        35px 42px 40px;
+
+    box-sizing: border-box;
+
+    box-shadow:
+        0 20px 55px
+        rgba(46, 38, 85, 0.15);
+
+    border:
+        1px solid rgba(
+            255,
+            255,
+            255,
+            0.8
+        );
+
+}
+
+
+/* =========================================
+   PROFILE CARD HEADER
+========================================= */
+
+.profile-card-header {
+
+    text-align: center;
+
+    margin-bottom: 30px;
+
+}
+
+
+.profile-avatar {
+
+    width: 76px;
+
+    height: 76px;
+
+    margin: 0 auto 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #7c3aed
+        );
+
+    color: white;
+
+    font-size: 34px;
+
+    box-shadow:
+        0 8px 20px
+        rgba(37, 99, 235, 0.25);
+
+}
+
+
+.profile-card-header h1 {
+
+    margin: 0;
+
+    color: #1e3a8a;
+
+    font-size: 32px;
+
+    font-weight: 800;
+
+}
+
+
+.profile-card-header p {
+
+    margin:
+        8px 0 0;
+
+    color: #6b7280;
+
+    font-size: 15px;
+
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+#profileForm {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 19px;
+
+}
+
+
+/* =========================================
+   FIELD
+========================================= */
+
+.profile-field {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+}
+
+
+.profile-field label {
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    color: #374151;
+
+}
+
+
+/* =========================================
+   INPUT
+========================================= */
+
+.profile-field input {
+
+    width: 100%;
+
+    height: 49px;
+
+    padding:
+        0 15px;
+
+    box-sizing: border-box;
+
+    border:
+        1px solid #d7dce5;
+
+    border-radius: 11px;
+
+    background: #f9fafb;
+
+    color: #1f2937;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition:
+        border 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+
+}
+
+
+.profile-field input::placeholder {
+
+    color: #9ca3af;
+
+}
+
+
+.profile-field input:focus {
+
+    background: white;
+
+    border-color: #6366f1;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(99, 102, 241, 0.10);
+
+}
+
+
+/* EMAIL READONLY */
+
+.profile-field input[readonly] {
+
+    background: #f1f5f9;
+
+    color: #64748b;
+
+    cursor: not-allowed;
+
+}
+
+
+/* =========================================
+   SAVE BUTTON
+========================================= */
+
+.save-profile-btn {
+
+    width: 100%;
+
+    height: 52px;
+
+    margin-top: 7px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #2563eb,
+            #7c3aed
+        );
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 18px
+        rgba(79, 70, 229, 0.25);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+}
+
+
+.save-profile-btn:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 12px 25px
+        rgba(79, 70, 229, 0.30);
+
+}
+
+
+.save-profile-btn:active {
+
+    transform:
+        translateY(0);
+
+}
+
+
+/* =========================================
+   MESSAGE
+========================================= */
+
+.profile-message {
+
+    text-align: center;
+
+    margin:
+        18px 0 0;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    min-height: 20px;
+
+}
+
+
+/* =========================================
+   MOBILE RESPONSIVE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .profile-header {
+
+        min-height: auto;
+
+        padding:
+            18px 20px;
+
+        flex-direction: column;
+
+        gap: 15px;
+
+    }
+
+
+    .profile-logo {
+
+        font-size: 24px;
+
+    }
+
+
+    .profile-nav {
+
+        gap: 16px;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+    }
+
+
+    .profile-nav a {
+
+        font-size: 13px;
+
+    }
+
+
+    .profile-main {
+
+        padding:
+            30px 15px 50px;
+
+    }
+
+
+    .profile-card {
+
+        padding:
+            28px 20px 30px;
+
+        border-radius: 18px;
+
+    }
+
+
+    .profile-card-header h1 {
+
+        font-size: 27px;
+
+    }
+
+
+    .profile-avatar {
+
+        width: 68px;
+
+        height: 68px;
+
+        font-size: 30px;
+
+    }
+
+}
