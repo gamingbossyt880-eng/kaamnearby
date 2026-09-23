@@ -185,16 +185,20 @@ app.post("/api/register", async (req, res) => {
 // LOGIN API
 // ===============================
 
+// ===============================
+// LOGIN API
+// ===============================
+
 app.post("/api/login", async (req, res) => {
 
     try {
 
         const { email, password } = req.body;
 
-        // Check required fields
+        // Check empty fields
         if (!email || !password) {
             return res.status(400).json({
-                message: "Email and password are required"
+                message: "Please enter email and password"
             });
         }
 
@@ -210,11 +214,10 @@ app.post("/api/login", async (req, res) => {
         }
 
         // Check password
-        const isPasswordCorrect =
-            await bcrypt.compare(
-                password,
-                user.password
-            );
+        const isPasswordCorrect = await bcrypt.compare(
+            password,
+            user.password
+        );
 
         if (!isPasswordCorrect) {
             return res.status(400).json({
