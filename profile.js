@@ -17,6 +17,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     const userEmail =
         localStorage.getItem("userEmail");
 
+    const userRole =
+        localStorage.getItem("userRole");
+
 
     // ==========================================
     // CHECK LOGIN
@@ -27,8 +30,56 @@ document.addEventListener("DOMContentLoaded", async () => {
         message.innerText =
             "Please login first.";
 
+        message.style.color =
+            "red";
+
         return;
     }
+
+
+    // ==========================================
+    // ONLY JOB SEEKER
+    // ==========================================
+
+    if (userRole !== "jobseeker") {
+
+        message.innerText =
+            "Profile is only available for Job Seekers.";
+
+        message.style.color =
+            "red";
+
+        if (form) {
+
+            form.style.display =
+                "none";
+
+        }
+
+        return;
+    }
+
+
+    // ==========================================
+    // PHOTO ELEMENTS
+    // ==========================================
+
+    const photoInput =
+        document.getElementById("photo");
+
+    const photoPreview =
+        document.getElementById(
+            "profilePhotoPreview"
+        );
+
+    const photoPlaceholder =
+        document.getElementById(
+            "photoPlaceholder"
+        );
+
+
+    // This will contain the selected photo
+    let photoData = "";
 
 
     // ==========================================
@@ -43,6 +94,137 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
     // ==========================================
+    // PHOTO PREVIEW FUNCTION
+    // ==========================================
+
+    function showPhotoPreview(photo) {
+
+        if (
+            photoPreview &&
+            photo
+        ) {
+
+            photoPreview.src =
+                photo;
+
+            photoPreview.style.display =
+                "block";
+
+
+            if (photoPlaceholder) {
+
+                photoPlaceholder.style.display =
+                    "none";
+
+            }
+
+        }
+
+    }
+
+
+    // ==========================================
+    // SELECT PHOTO
+    // ==========================================
+
+    if (photoInput) {
+
+        photoInput.addEventListener(
+            "change",
+            (event) => {
+
+                const file =
+                    event.target.files[0];
+
+
+                // No file selected
+
+                if (!file) {
+
+                    return;
+
+                }
+
+
+                // ==================================
+                // CHECK IMAGE TYPE
+                // ==================================
+
+                if (
+                    !file.type.startsWith(
+                        "image/"
+                    )
+                ) {
+
+                    alert(
+                        "Please select an image file."
+                    );
+
+                    photoInput.value =
+                        "";
+
+                    return;
+
+                }
+
+
+                // ==================================
+                // CHECK IMAGE SIZE
+                // Maximum 2 MB
+                // ==================================
+
+                if (
+                    file.size >
+                    2 * 1024 * 1024
+                ) {
+
+                    alert(
+                        "Photo size should be less than 2 MB."
+                    );
+
+                    photoInput.value =
+                        "";
+
+                    return;
+
+                }
+
+
+                // ==================================
+                // READ IMAGE
+                // ==================================
+
+                const reader =
+                    new FileReader();
+
+
+                reader.onload =
+                    function () {
+
+                        photoData =
+                            reader.result;
+
+
+                        // Show selected photo
+
+                        showPhotoPreview(
+                            photoData
+                        );
+
+                    };
+
+
+                reader.readAsDataURL(
+                    file
+                );
+
+            }
+        );
+
+    }
+
+
+    // ==========================================
     // LOAD EXISTING PROFILE
     // ==========================================
 
@@ -51,7 +233,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         const response =
             await fetch(
                 "https://kaamnearby.onrender.com/api/profile?email=" +
-                encodeURIComponent(userEmail)
+                encodeURIComponent(
+                    userEmail
+                )
             );
 
 
@@ -61,28 +245,71 @@ document.addEventListener("DOMContentLoaded", async () => {
                 await response.json();
 
 
-            document.getElementById("name").value =
-                profile.name || userName || "";
+            // ==================================
+            // LOAD TEXT DATA
+            // ==================================
+
+            document.getElementById(
+                "name"
+            ).value =
+                profile.name ||
+                userName ||
+                "";
 
 
-            document.getElementById("email").value =
-                profile.email || userEmail;
+            document.getElementById(
+                "email"
+            ).value =
+                profile.email ||
+                userEmail;
 
 
-            document.getElementById("phone").value =
-                profile.phone || "";
+            document.getElementById(
+                "phone"
+            ).value =
+                profile.phone ||
+                "";
 
 
-            document.getElementById("skills").value =
-                profile.skills || "";
+            document.getElementById(
+                "skills"
+            ).value =
+                profile.skills ||
+                "";
 
 
-            document.getElementById("experience").value =
-                profile.experience || "";
+            document.getElementById(
+                "experience"
+            ).value =
+                profile.experience ||
+                "";
 
 
-            document.getElementById("location").value =
-                profile.location || "";
+            document.getElementById(
+                "location"
+            ).value =
+                profile.location ||
+                "";
+
+
+            // ==================================
+            // LOAD SAVED PHOTO
+            // ==================================
+
+            if (
+                profile.photo &&
+                profile.photo.trim() !== ""
+            ) {
+
+                photoData =
+                    profile.photo;
+
+
+                showPhotoPreview(
+                    profile.photo
+                );
+
+            }
 
         }
 
@@ -108,36 +335,113 @@ document.addEventListener("DOMContentLoaded", async () => {
             event.preventDefault();
 
 
+            // ==================================
+            // GET VALUES
+            // ==================================
+
+            const name =
+                document.getElementById(
+                    "name"
+                ).value.trim();
+
+
+            const email =
+                document.getElementById(
+                    "email"
+                ).value.trim();
+
+
+            const phone =
+                document.getElementById(
+                    "phone"
+                ).value.trim();
+
+
+            const skills =
+                document.getElementById(
+                    "skills"
+                ).value.trim();
+
+
+            const experience =
+                document.getElementById(
+                    "experience"
+                ).value.trim();
+
+
+            const location =
+                document.getElementById(
+                    "location"
+                ).value.trim();
+
+
+            // ==================================
+            // CHECK ALL REQUIRED FIELDS
+            // ==================================
+
+            if (
+                !name ||
+                !email ||
+                !phone ||
+                !skills ||
+                !experience ||
+                !location ||
+                !photoData
+            ) {
+
+                message.innerText =
+                    "Please complete all profile details and upload a profile photo.";
+
+                message.style.color =
+                    "red";
+
+                return;
+
+            }
+
+
+            // ==================================
+            // PROFILE DATA
+            // ==================================
+
             const profileData = {
 
                 name:
-                    document.getElementById("name")
-                        .value.trim(),
+                    name,
 
                 email:
-                    document.getElementById("email")
-                        .value.trim(),
+                    email,
 
                 phone:
-                    document.getElementById("phone")
-                        .value.trim(),
+                    phone,
 
                 skills:
-                    document.getElementById("skills")
-                        .value.trim(),
+                    skills,
 
                 experience:
-                    document.getElementById("experience")
-                        .value.trim(),
+                    experience,
 
                 location:
-                    document.getElementById("location")
-                        .value.trim()
+                    location,
+
+                photo:
+                    photoData
 
             };
 
 
+            // ==================================
+            // SAVE TO BACKEND
+            // ==================================
+
             try {
+
+                message.innerText =
+                    "Saving profile...";
+
+                message.style.color =
+                    "#2563eb";
+
 
                 const response =
                     await fetch(
@@ -162,16 +466,42 @@ document.addEventListener("DOMContentLoaded", async () => {
                     await response.json();
 
 
+                // ==================================
+                // SUCCESS
+                // ==================================
+
                 if (response.ok) {
 
                     message.innerText =
                         "Profile saved successfully!";
+
+                    message.style.color =
+                        "green";
+
+
+                    // Make sure latest photo
+                    // remains visible
+
+                    if (
+                        photoData &&
+                        photoPreview
+                    ) {
+
+                        showPhotoPreview(
+                            photoData
+                        );
+
+                    }
+
 
                 } else {
 
                     message.innerText =
                         data.message ||
                         "Failed to save profile";
+
+                    message.style.color =
+                        "red";
 
                 }
 
@@ -186,6 +516,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                 message.innerText =
                     "Cannot connect to server.";
+
+                message.style.color =
+                    "red";
 
             }
 
