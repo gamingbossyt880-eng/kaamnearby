@@ -124,105 +124,169 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
     // ==========================================
-    // SELECT PHOTO
-    // ==========================================
+// SELECT AND COMPRESS PHOTO
+// ==========================================
 
-    if (photoInput) {
+if (photoInput) {
 
-        photoInput.addEventListener(
-            "change",
-            (event) => {
+    photoInput.addEventListener("change", (event) => {
 
-                const file =
-                    event.target.files[0];
+        const file = event.target.files[0];
 
+        if (!file) {
+            return;
+        }
 
-                // No file selected
+        // Check image type
+        if (!file.type.startsWith("image/")) {
 
-                if (!file) {
+            alert("Please select an image file.");
 
-                    return;
+            photoInput.value = "";
 
-                }
+            return;
+        }
 
+        // ==================================
+        // READ IMAGE
+        // ==================================
 
-                // ==================================
-                // CHECK IMAGE TYPE
-                // ==================================
+        const reader = new FileReader();
 
-                if (
-                    !file.type.startsWith(
-                        "image/"
-                    )
-                ) {
+        reader.onload = function () {
 
-                    alert(
-                        "Please select an image file."
-                    );
+            const img = new Image();
 
-                    photoInput.value =
-                        "";
-
-                    return;
-
-                }
-
+            img.onload = function () {
 
                 // ==================================
-// CHECK IMAGE SIZE
-// Maximum 200 KB
-// ==================================
-
-const maxPhotoSize =
-    200 * 1024;
-
-
-if (file.size > maxPhotoSize) {
-
-    alert(
-        "Photo size should be less than 200 KB."
-    );
-
-    photoInput.value = "";
-
-    return;
-
-}
-
-
-                // ==================================
-                // READ IMAGE
+                // CREATE CANVAS
                 // ==================================
 
-                const reader =
-                    new FileReader();
+                const canvas =
+                    document.createElement("canvas");
 
+                const ctx =
+                    canvas.getContext("2d");
 
-                reader.onload =
-                    function () {
+                // Maximum image dimension
+                const maxWidth = 800;
+                const maxHeight = 800;
 
-                        photoData =
-                            reader.result;
+                let width = img.width;
+                let height = img.height;
 
+                // Resize large image
+                if (width > maxWidth ||
+                    height > maxHeight) {
 
-                        // Show selected photo
-
-                        showPhotoPreview(
-                            photoData
+                    const ratio =
+                        Math.min(
+                            maxWidth / width,
+                            maxHeight / height
                         );
 
-                    };
+                    width =
+                        Math.round(width * ratio);
 
+                    height =
+                        Math.round(height * ratio);
+                }
 
-                reader.readAsDataURL(
-                    file
+                canvas.width = width;
+                canvas.height = height;
+
+                // Draw image
+                ctx.drawImage(
+                    img,
+                    0,
+                    0,
+                    width,
+                    height
                 );
 
-            }
-        );
+                // ==================================
+                // COMPRESS IMAGE
+                // ==================================
 
-    }
+                let quality = 0.8;
+                let compressedPhoto = "";
 
+                function compressPhoto() {
+
+                    compressedPhoto =
+                        canvas.toDataURL(
+                            "image/jpeg",
+                            quality
+                        );
+
+                    // Base64 size check
+                    const sizeInBytes =
+                        Math.round(
+                            (compressedPhoto.length * 3) / 4
+                        );
+
+                    const maxSize =
+                        200 * 1024;
+
+                    if (
+                        sizeInBytes > maxSize &&
+                        quality > 0.2
+                    ) {
+
+                        quality -= 0.1;
+
+                        compressPhoto();
+
+                        return;
+                    }
+
+                    // ==================================
+                    // FINAL PHOTO
+                    // ==================================
+
+                    if (sizeInBytes > maxSize) {
+
+                        alert(
+                            "This photo is still too large. Please choose another photo."
+                        );
+
+                        photoInput.value = "";
+
+                        return;
+                    }
+
+                    // Save compressed photo
+                    photoData =
+                        compressedPhoto;
+
+                    // Show preview
+                    showPhotoPreview(
+                        photoData
+                    );
+
+                    console.log(
+                        "Photo compressed successfully."
+                    );
+
+                    console.log(
+                        "Photo size:",
+                        Math.round(
+                            sizeInBytes / 1024
+                        ),
+                        "KB"
+                    );
+                }
+
+                compressPhoto();
+            };
+
+            img.src = reader.result;
+        };
+
+        reader.readAsDataURL(file);
+    });
+}
 
     // ==========================================
     // LOAD EXISTING PROFILE
