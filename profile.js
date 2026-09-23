@@ -1,24 +1,15 @@
 document.addEventListener("DOMContentLoaded", async () => {
 
-    const form =
-        document.getElementById("profileForm");
-
-    const message =
-        document.getElementById("message");
-
+    const form = document.getElementById("profileForm");
+    const message = document.getElementById("message");
 
     // ==========================================
     // GET LOGGED-IN USER
     // ==========================================
 
-    const userName =
-        localStorage.getItem("userName");
-
-    const userEmail =
-        localStorage.getItem("userEmail");
-
-    const userRole =
-        localStorage.getItem("userRole");
+    const userName = localStorage.getItem("userName");
+    const userEmail = localStorage.getItem("userEmail");
+    const userRole = localStorage.getItem("userRole");
 
 
     // ==========================================
@@ -27,11 +18,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if (!userEmail) {
 
-        message.innerText =
-            "Please login first.";
-
-        message.style.color =
-            "red";
+        message.innerText = "Please login first.";
+        message.style.color = "red";
 
         return;
     }
@@ -46,14 +34,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         message.innerText =
             "Profile is only available for Job Seekers.";
 
-        message.style.color =
-            "red";
+        message.style.color = "red";
 
         if (form) {
-
-            form.style.display =
-                "none";
-
+            form.style.display = "none";
         }
 
         return;
@@ -68,22 +52,18 @@ document.addEventListener("DOMContentLoaded", async () => {
         document.getElementById("photo");
 
     const photoPreview =
-        document.getElementById(
-            "profilePhotoPreview"
-        );
+        document.getElementById("profilePhotoPreview");
 
     const photoPlaceholder =
-        document.getElementById(
-            "photoPlaceholder"
-        );
+        document.getElementById("photoPlaceholder");
 
 
-    // This will contain the selected photo
+    // Selected photo
     let photoData = "";
 
 
     // ==========================================
-    // SHOW LOGIN DATA
+    // SHOW USER DATA
     // ==========================================
 
     document.getElementById("name").value =
@@ -94,29 +74,24 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
     // ==========================================
-    // PHOTO PREVIEW FUNCTION
+    // SHOW PHOTO PREVIEW
     // ==========================================
 
     function showPhotoPreview(photo) {
 
-        if (
-            photoPreview &&
-            photo
-        ) {
+        if (!photoPreview || !photo) {
+            return;
+        }
 
-            photoPreview.src =
-                photo;
+        photoPreview.src = photo;
 
-            photoPreview.style.display =
-                "block";
+        photoPreview.style.display = "block";
 
 
-            if (photoPlaceholder) {
+        if (photoPlaceholder) {
 
-                photoPlaceholder.style.display =
-                    "none";
-
-            }
+            photoPlaceholder.style.display =
+                "none";
 
         }
 
@@ -124,169 +99,226 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
     // ==========================================
-// SELECT AND COMPRESS PHOTO
-// ==========================================
+    // SELECT PHOTO
+    // ==========================================
 
-if (photoInput) {
+    if (photoInput) {
 
-    photoInput.addEventListener("change", (event) => {
+        photoInput.addEventListener(
+            "change",
+            (event) => {
 
-        const file = event.target.files[0];
+                const file =
+                    event.target.files[0];
 
-        if (!file) {
-            return;
-        }
 
-        // Check image type
-        if (!file.type.startsWith("image/")) {
-
-            alert("Please select an image file.");
-
-            photoInput.value = "";
-
-            return;
-        }
-
-        // ==================================
-        // READ IMAGE
-        // ==================================
-
-        const reader = new FileReader();
-
-        reader.onload = function () {
-
-            const img = new Image();
-
-            img.onload = function () {
-
-                // ==================================
-                // CREATE CANVAS
-                // ==================================
-
-                const canvas =
-                    document.createElement("canvas");
-
-                const ctx =
-                    canvas.getContext("2d");
-
-                // Maximum image dimension
-                const maxWidth = 800;
-                const maxHeight = 800;
-
-                let width = img.width;
-                let height = img.height;
-
-                // Resize large image
-                if (width > maxWidth ||
-                    height > maxHeight) {
-
-                    const ratio =
-                        Math.min(
-                            maxWidth / width,
-                            maxHeight / height
-                        );
-
-                    width =
-                        Math.round(width * ratio);
-
-                    height =
-                        Math.round(height * ratio);
+                if (!file) {
+                    return;
                 }
 
-                canvas.width = width;
-                canvas.height = height;
 
-                // Draw image
-                ctx.drawImage(
-                    img,
-                    0,
-                    0,
-                    width,
-                    height
-                );
+                // Check image
+                if (!file.type.startsWith("image/")) {
+
+                    alert(
+                        "Please select an image file."
+                    );
+
+                    photoInput.value = "";
+
+                    return;
+                }
+
 
                 // ==================================
-                // COMPRESS IMAGE
+                // READ IMAGE
                 // ==================================
 
-                let quality = 0.8;
-                let compressedPhoto = "";
+                const reader =
+                    new FileReader();
 
-                function compressPhoto() {
 
-                    compressedPhoto =
-                        canvas.toDataURL(
-                            "image/jpeg",
-                            quality
+                reader.onload = function () {
+
+                    const img =
+                        new Image();
+
+
+                    img.onload = function () {
+
+                        // ==================================
+                        // CREATE CANVAS
+                        // ==================================
+
+                        const canvas =
+                            document.createElement(
+                                "canvas"
+                            );
+
+
+                        const ctx =
+                            canvas.getContext(
+                                "2d"
+                            );
+
+
+                        // Maximum size
+                        const maxWidth = 800;
+                        const maxHeight = 800;
+
+
+                        let width =
+                            img.width;
+
+                        let height =
+                            img.height;
+
+
+                        // Resize large photo
+                        if (
+                            width > maxWidth ||
+                            height > maxHeight
+                        ) {
+
+                            const ratio =
+                                Math.min(
+                                    maxWidth / width,
+                                    maxHeight / height
+                                );
+
+
+                            width =
+                                Math.round(
+                                    width * ratio
+                                );
+
+                            height =
+                                Math.round(
+                                    height * ratio
+                                );
+
+                        }
+
+
+                        canvas.width = width;
+                        canvas.height = height;
+
+
+                        // Draw image
+                        ctx.drawImage(
+                            img,
+                            0,
+                            0,
+                            width,
+                            height
                         );
 
-                    // Base64 size check
-                    const sizeInBytes =
-                        Math.round(
-                            (compressedPhoto.length * 3) / 4
-                        );
 
-                    const maxSize =
-                        200 * 1024;
+                        // ==================================
+                        // COMPRESS PHOTO
+                        // ==================================
 
-                    if (
-                        sizeInBytes > maxSize &&
-                        quality > 0.2
-                    ) {
+                        let quality = 0.8;
 
-                        quality -= 0.1;
+                        const maxSize =
+                            200 * 1024;
+
+
+                        function compressPhoto() {
+
+                            const compressedPhoto =
+                                canvas.toDataURL(
+                                    "image/jpeg",
+                                    quality
+                                );
+
+
+                            const sizeInBytes =
+                                Math.round(
+                                    (compressedPhoto.length * 3) / 4
+                                );
+
+
+                            console.log(
+                                "Photo size:",
+                                Math.round(
+                                    sizeInBytes / 1024
+                                ),
+                                "KB"
+                            );
+
+
+                            // Reduce quality
+                            if (
+                                sizeInBytes > maxSize &&
+                                quality > 0.2
+                            ) {
+
+                                quality -= 0.1;
+
+                                compressPhoto();
+
+                                return;
+                            }
+
+
+                            // Still too large
+                            if (
+                                sizeInBytes > maxSize
+                            ) {
+
+                                alert(
+                                    "Photo is too large. Please choose another photo."
+                                );
+
+                                photoInput.value = "";
+
+                                return;
+                            }
+
+
+                            // ==================================
+                            // SAVE PHOTO
+                            // ==================================
+
+                            photoData =
+                                compressedPhoto;
+
+
+                            // ==================================
+                            // SHOW PHOTO IMMEDIATELY
+                            // ==================================
+
+                            showPhotoPreview(
+                                photoData
+                            );
+
+
+                            console.log(
+                                "Photo ready!"
+                            );
+
+                        }
+
 
                         compressPhoto();
 
-                        return;
-                    }
+                    };
 
-                    // ==================================
-                    // FINAL PHOTO
-                    // ==================================
 
-                    if (sizeInBytes > maxSize) {
+                    img.src =
+                        reader.result;
 
-                        alert(
-                            "This photo is still too large. Please choose another photo."
-                        );
+                };
 
-                        photoInput.value = "";
 
-                        return;
-                    }
+                reader.readAsDataURL(file);
 
-                    // Save compressed photo
-                    photoData =
-                        compressedPhoto;
+            }
+        );
 
-                    // Show preview
-                    showPhotoPreview(
-                        photoData
-                    );
+    }
 
-                    console.log(
-                        "Photo compressed successfully."
-                    );
-
-                    console.log(
-                        "Photo size:",
-                        Math.round(
-                            sizeInBytes / 1024
-                        ),
-                        "KB"
-                    );
-                }
-
-                compressPhoto();
-            };
-
-            img.src = reader.result;
-        };
-
-        reader.readAsDataURL(file);
-    });
-}
 
     // ==========================================
     // LOAD EXISTING PROFILE
@@ -297,9 +329,7 @@ if (photoInput) {
         const response =
             await fetch(
                 "https://kaamnearby.onrender.com/api/profile?email=" +
-                encodeURIComponent(
-                    userEmail
-                )
+                encodeURIComponent(userEmail)
             );
 
 
@@ -309,57 +339,44 @@ if (photoInput) {
                 await response.json();
 
 
-            // ==================================
-            // LOAD TEXT DATA
-            // ==================================
-
-            document.getElementById(
-                "name"
-            ).value =
+            // Name
+            document.getElementById("name").value =
                 profile.name ||
                 userName ||
                 "";
 
 
-            document.getElementById(
-                "email"
-            ).value =
+            // Email
+            document.getElementById("email").value =
                 profile.email ||
                 userEmail;
 
 
-            document.getElementById(
-                "phone"
-            ).value =
+            // Phone
+            document.getElementById("phone").value =
                 profile.phone ||
                 "";
 
 
-            document.getElementById(
-                "skills"
-            ).value =
+            // Skills
+            document.getElementById("skills").value =
                 profile.skills ||
                 "";
 
 
-            document.getElementById(
-                "experience"
-            ).value =
+            // Experience
+            document.getElementById("experience").value =
                 profile.experience ||
                 "";
 
 
-            document.getElementById(
-                "location"
-            ).value =
+            // Location
+            document.getElementById("location").value =
                 profile.location ||
                 "";
 
 
-            // ==================================
-            // LOAD SAVED PHOTO
-            // ==================================
-
+            // Existing photo
             if (
                 profile.photo &&
                 profile.photo.trim() !== ""
@@ -377,7 +394,6 @@ if (photoInput) {
 
         }
 
-
     } catch (error) {
 
         console.error(
@@ -388,79 +404,15 @@ if (photoInput) {
     }
 
 
-    try {
+    // ==========================================
+    // SAVE PROFILE
+    // ==========================================
 
-    message.innerText = "Saving profile...";
-    message.style.color = "#2563eb";
+    form.addEventListener(
+        "submit",
+        async (event) => {
 
-    const response = await fetch(
-        "https://kaamnearby.onrender.com/api/profile",
-        {
-            method: "POST",
-
-            headers: {
-                "Content-Type": "application/json"
-            },
-
-            body: JSON.stringify(profileData)
-        }
-    );
-
-    // Response ko pehle text ke form mein read karo
-    const responseText = await response.text();
-
-    console.log("SERVER STATUS:", response.status);
-    console.log("SERVER RESPONSE:", responseText);
-
-    let data = {};
-
-    try {
-        data = JSON.parse(responseText);
-    } catch (jsonError) {
-        console.error(
-            "SERVER DID NOT RETURN JSON:",
-            responseText
-        );
-    }
-
-    if (response.ok) {
-
-        message.innerText =
-            data.message ||
-            "Profile saved successfully!";
-
-        message.style.color = "green";
-
-        if (photoData && photoPreview) {
-            showPhotoPreview(photoData);
-        }
-
-    } else {
-
-        message.innerText =
-            data.message ||
-            "Server error: " + response.status;
-
-        message.style.color = "red";
-
-        console.error(
-            "PROFILE SAVE FAILED:",
-            responseText
-        );
-    }
-
-} catch (error) {
-
-    console.error(
-        "SAVE PROFILE ERROR:",
-        error
-    );
-
-    message.innerText =
-        "Cannot connect to server. Check Render backend.";
-
-    message.style.color = "red";
-}
+            event.preventDefault();
 
 
             // ==================================
@@ -504,7 +456,7 @@ if (photoInput) {
 
 
             // ==================================
-            // CHECK ALL REQUIRED FIELDS
+            // CHECK ALL 7 FIELDS
             // ==================================
 
             if (
@@ -524,7 +476,6 @@ if (photoInput) {
                     "red";
 
                 return;
-
             }
 
 
@@ -534,26 +485,19 @@ if (photoInput) {
 
             const profileData = {
 
-                name:
-                    name,
+                name: name,
 
-                email:
-                    email,
+                email: email,
 
-                phone:
-                    phone,
+                phone: phone,
 
-                skills:
-                    skills,
+                skills: skills,
 
-                experience:
-                    experience,
+                experience: experience,
 
-                location:
-                    location,
+                location: location,
 
-                photo:
-                    photoData
+                photo: photoData
 
             };
 
@@ -607,20 +551,10 @@ if (photoInput) {
                         "green";
 
 
-                    // Make sure latest photo
-                    // remains visible
-
-                    if (
-                        photoData &&
-                        photoPreview
-                    ) {
-
-                        showPhotoPreview(
-                            photoData
-                        );
-
-                    }
-
+                    // Keep photo visible
+                    showPhotoPreview(
+                        photoData
+                    );
 
                 } else {
 
