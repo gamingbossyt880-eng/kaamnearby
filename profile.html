@@ -16,15 +16,21 @@
 </head>
 
 
-<body>
+<body class="profile-page">
 
-    <header>
 
-        <div class="logo">
+    <!-- =========================================
+         NAVBAR
+    ========================================== -->
+
+    <header class="profile-header">
+
+        <div class="profile-logo">
             Kaam Nearby
         </div>
 
-        <nav>
+
+        <nav class="profile-nav">
 
             <a href="jobseeker.html">
                 Home
@@ -43,103 +49,190 @@
     </header>
 
 
-    <main>
 
-        <div class="register-box">
+    <!-- =========================================
+         PROFILE MAIN
+    ========================================== -->
 
-            <h1>My Profile</h1>
+    <main class="profile-main">
 
+
+        <div class="profile-card">
+
+
+            <!-- PROFILE HEADER -->
+
+            <div class="profile-card-header">
+
+                <div class="profile-avatar">
+                    👤
+                </div>
+
+                <h1>
+                    My Profile
+                </h1>
+
+                <p>
+                    Complete your profile to apply for jobs
+                </p>
+
+            </div>
+
+
+
+            <!-- PROFILE FORM -->
 
             <form id="profileForm">
 
 
-                <label>
-                    Name
-                </label>
+                <!-- NAME -->
 
-                <input
-                    type="text"
-                    id="name"
-                    required
-                >
+                <div class="profile-field">
 
+                    <label for="name">
+                        Full Name
+                    </label>
 
-                <label>
-                    Email
-                </label>
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter your full name"
+                        required
+                    >
 
-                <input
-                    type="email"
-                    id="email"
-                    readonly
-                >
+                </div>
 
 
-                <label>
-                    Phone
-                </label>
 
-                <input
-                    type="text"
-                    id="phone"
-                    placeholder="Enter phone number"
-                    required
-                >
+                <!-- EMAIL -->
 
+                <div class="profile-field">
 
-                <label>
-                    Skills
-                </label>
+                    <label for="email">
+                        Email Address
+                    </label>
 
-                <input
-                    type="text"
-                    id="skills"
-                    placeholder="Example: Driving, Computer, Sales"
-                    required
-                >
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Your registered email"
+                        readonly
+                    >
+
+                </div>
 
 
-                <label>
-                    Experience
-                </label>
 
-                <input
-                    type="text"
-                    id="experience"
-                    placeholder="Example: 2 years"
-                    required
-                >
+                <!-- PHONE -->
 
+                <div class="profile-field">
 
-                <label>
-                    Location
-                </label>
+                    <label for="phone">
+                        Phone Number
+                    </label>
 
-                <input
-                    type="text"
-                    id="location"
-                    placeholder="Enter your location"
-                    required
-                >
+                    <input
+                        type="tel"
+                        id="phone"
+                        placeholder="Enter your phone number"
+                        required
+                    >
+
+                </div>
 
 
-                <button type="submit">
+
+                <!-- SKILLS -->
+
+                <div class="profile-field">
+
+                    <label for="skills">
+                        Skills
+                    </label>
+
+                    <input
+                        type="text"
+                        id="skills"
+                        placeholder="Example: Driving, Computer, Sales"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- EXPERIENCE -->
+
+                <div class="profile-field">
+
+                    <label for="experience">
+                        Experience
+                    </label>
+
+                    <input
+                        type="text"
+                        id="experience"
+                        placeholder="Example: 2 years"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- LOCATION -->
+
+                <div class="profile-field">
+
+                    <label for="location">
+                        Location
+                    </label>
+
+                    <input
+                        type="text"
+                        id="location"
+                        placeholder="Enter your current location"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- SAVE BUTTON -->
+
+                <button
+                    type="submit"
+                    class="save-profile-btn">
+
                     Save Profile
+
                 </button>
 
 
             </form>
 
 
-            <p id="message"></p>
+
+            <!-- MESSAGE -->
+
+            <p
+                id="message"
+                class="profile-message">
+            </p>
+
 
         </div>
+
 
     </main>
 
 
+
     <script src="profile.js"></script>
+
 
 </body>
 
+</html>
 </html>
