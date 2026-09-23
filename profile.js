@@ -169,25 +169,25 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
                 // ==================================
-                // CHECK IMAGE SIZE
-                // Maximum 2 MB
-                // ==================================
+// CHECK IMAGE SIZE
+// Maximum 200 KB
+// ==================================
 
-                if (
-                    file.size >
-                    2 * 1024 * 1024
-                ) {
+const maxPhotoSize =
+    200 * 1024;
 
-                    alert(
-                        "Photo size should be less than 2 MB."
-                    );
 
-                    photoInput.value =
-                        "";
+if (file.size > maxPhotoSize) {
 
-                    return;
+    alert(
+        "Photo size should be less than 200 KB."
+    );
 
-                }
+    photoInput.value = "";
+
+    return;
+
+}
 
 
                 // ==================================
