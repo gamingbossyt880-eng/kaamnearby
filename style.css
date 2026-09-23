@@ -3870,3 +3870,95 @@ body:has(.register-box) {
     }
 
 }
+.profile-status-section {
+    width: 90%;
+    max-width: 1100px;
+    margin: 30px auto;
+}
+
+.profile-status-card {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    border-left: 6px solid #ff9800;
+}
+
+.profile-status-icon {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff3e0;
+    border-radius: 50%;
+    font-size: 32px;
+}
+
+.profile-status-content {
+    flex: 1;
+}
+
+.profile-status-content h2 {
+    margin: 0 0 8px;
+    font-size: 24px;
+    color: #222;
+}
+
+.profile-status-content p {
+    margin: 5px 0 15px;
+    color: #666;
+    font-size: 15px;
+}
+
+.profile-progress {
+    width: 100%;
+    max-width: 600px;
+    height: 10px;
+    background: #eeeeee;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.profile-progress-bar {
+    width: 0%;
+    height: 100%;
+    background: #ff9800;
+    border-radius: 10px;
+    transition: width 0.4s ease;
+}
+
+.profile-progress-text {
+    font-weight: bold;
+}
+
+#profileButton {
+    margin-top: 10px;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+#profileButton:hover {
+    background: #1d4ed8;
+}
+
+.profile-complete {
+    border-left-color: #16a34a;
+}
+
+.profile-complete .profile-status-icon {
+    background: #dcfce7;
+}
+
+.profile-complete .profile-progress-bar {
+    background: #16a34a;
+}
