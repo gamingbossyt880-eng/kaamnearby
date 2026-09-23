@@ -2,178 +2,1024 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Kaam Nearby</title>
+    <title>Kaam Nearby | Find Local Jobs & Staff</title>
+
+    <meta
+        name="description"
+        content="Kaam Nearby connects local job seekers with nearby employers and businesses."
+    >
 
     <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
-    <!-- Navigation Bar -->
+<!-- =========================
+     NAVBAR
+========================= -->
 
-    <header>
+<header class="main-header">
 
-        <div class="logo">
-            Kaam Nearby
-        </div>
+    <div class="navbar">
 
-        <nav>
-            <a href="index.html">Home</a>
-<a href="jobseeker.html"
-   onclick="checkLogin(event, 'jobseeker.html')">
-   Find Jobs
-</a>
-<a href="employer.html"
-   onclick="checkLogin(event, 'employer.html')">
-   Post a Job
-</a>
-<a href="login.html">Login</a>
+        <a href="index.html" class="brand">
+            <span class="brand-icon">K</span>
+            <span>Kaam Nearby</span>
+        </a>
+
+        <nav class="main-nav">
+
+            <a href="index.html" class="active">
+                Home
+            </a>
+
+            <a href="jobseeker.html">
+                Find Jobs
+            </a>
+
+            <a href="employer.html">
+                Post a Job
+            </a>
+
+            <a href="login.html" class="nav-login">
+                Login
+            </a>
+
         </nav>
 
-    </header>
+    </div>
+
+</header>
 
 
-    <!-- Main Section -->
-
-    <main>
-
-        <section class="hero">
-
-            <h1>
-                Find Work Near You
-            </h1>
-
-            <p>
-                Kaam Nearby helps workers find local jobs
-                and employers find nearby staff.
-            </p>
-
-           <div class="buttons">
-   <a href="jobseeker.html"
-   class="hero-button"
-   onclick="checkLogin(event, 'jobseeker.html')">
-   Find Jobs
-</a>
-
-<a href="employer.html"
-   class="hero-button"
-   onclick="checkLogin(event, 'employer.html')">
-   Post a Job
-</a>
-</div>
-
-        </section>
+<main>
 
 
-        <!-- Features -->
+<!-- =========================
+     HERO SECTION
+========================= -->
 
-        <section class="features">
+<section class="professional-hero">
 
-            <h2>
-                How Kaam Nearby Works
-            </h2>
+    <div class="hero-content">
 
-            <div class="feature-container">
-
-                <div class="feature">
-                    <h3>🔍 Find Jobs</h3>
-                    <p>
-                        Search for jobs available near your location.
-                    </p>
-                </div>
+        <div class="hero-badge">
+            <span>●</span>
+            Local Jobs. Local Talent. One Platform.
+        </div>
 
 
-                <div class="feature">
-                    <h3>📍 Nearby Work</h3>
-                    <p>
-                        Find local work based on your location.
-                    </p>
-                </div>
+        <h1>
+            Find the right work
+            <span>near you.</span>
+        </h1>
 
 
-                <div class="feature">
-                    <h3>👨‍💼 Hire Staff</h3>
-                    <p>
-                        Employers can find suitable workers.
-                    </p>
-                </div>
+        <p class="hero-description">
 
-            </div>
+            Kaam Nearby connects job seekers with nearby shops,
+            businesses and employers — making local hiring
+            simple, fast and accessible.
 
-        </section>
-                </section>
-
-
-        <!-- Our Team -->
-
-        <section class="team-section">
-
-            <h2>
-                Meet Our Team
-            </h2>
-
-            <p class="team-subtitle">
-                The people behind Kaam Nearby
-            </p>
-
-            <div class="team-container">
-
-                <div class="team-card">
-
-                    <img src="myyyy.jpeg" alt="Abhi Jain">
-
-                    <h3>
-                        Abhi Jain
-                    </h3>
-
-                    <p>
-                        Frontend & Backend Developer
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-    </main>
-
-    </main>
-
-
-    <!-- Footer -->
-
-    <footer>
-
-        <p>
-            © 2026 Kaam Nearby | Local Jobs & Staff Finder
         </p>
 
-    </footer>
+
+        <div class="hero-actions">
+
+            <a href="jobseeker.html" class="primary-btn">
+                🔎 Find Jobs
+            </a>
+
+            <a href="employer.html" class="secondary-btn">
+                👨‍💼 Hire Staff
+            </a>
+
+        </div>
 
 
-    <script src="script.js"></script>
-<script>
-function checkLogin(event, page) {
+        <div class="hero-points">
 
-    const userEmail = localStorage.getItem("userEmail");
+            <div>
+                <span>✓</span>
+                Search nearby jobs
+            </div>
 
-    if (!userEmail) {
-        event.preventDefault();
+            <div>
+                <span>✓</span>
+                Apply online
+            </div>
 
-        alert("Please login first to continue.");
+            <div>
+                <span>✓</span>
+                Track applications
+            </div>
 
-        window.location.href = "login.html";
+        </div>
 
-        return;
-    }
+    </div>
 
-    window.location.href = page;
-}
+
+    <!-- Hero visual -->
+
+    <div class="hero-visual">
+
+        <div class="dashboard-preview">
+
+            <div class="preview-top">
+
+                <div class="mini-logo">
+                    K
+                </div>
+
+                <div>
+                    <strong>Nearby Opportunities</strong>
+                    <small>Find work around you</small>
+                </div>
+
+            </div>
+
+
+            <div class="search-preview">
+
+                <span>🔍</span>
+
+                <span>
+                    Search jobs or locations...
+                </span>
+
+            </div>
+
+
+            <div class="job-preview">
+
+                <div class="job-icon">
+                    🏪
+                </div>
+
+                <div class="job-info">
+
+                    <strong>Shop Assistant</strong>
+
+                    <span>
+                        📍 Nearby location
+                    </span>
+
+                    <span>
+                        💰 Salary available
+                    </span>
+
+                </div>
+
+                <div class="job-arrow">
+                    →
+                </div>
+
+            </div>
+
+
+            <div class="job-preview">
+
+                <div class="job-icon">
+                    🍽️
+                </div>
+
+                <div class="job-info">
+
+                    <strong>Restaurant Staff</strong>
+
+                    <span>
+                        📍 Nearby location
+                    </span>
+
+                    <span>
+                        🕐 Working hours available
+                    </span>
+
+                </div>
+
+                <div class="job-arrow">
+                    →
+                </div>
+
+            </div>
+
+
+            <div class="mini-status">
+
+                <span class="status-dot"></span>
+
+                Applications can be tracked online
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     QUICK OVERVIEW
+========================= -->
+
+<section class="overview-section">
+
+    <div class="section-heading">
+
+        <span class="section-label">
+            PLATFORM OVERVIEW
+        </span>
+
+        <h2>
+            One platform. Two sides. One simple connection.
+        </h2>
+
+        <p>
+            Kaam Nearby brings local employers and job seekers
+            together through a simple digital workflow.
+        </p>
+
+    </div>
+
+
+    <div class="overview-grid">
+
+
+        <div class="overview-card blue-card">
+
+            <div class="overview-icon">
+                🔎
+            </div>
+
+            <h3>
+                Job Seekers
+            </h3>
+
+            <p>
+                Search nearby opportunities, view job details,
+                apply and track your application status.
+            </p>
+
+            <div class="overview-link">
+                Find work →
+            </div>
+
+        </div>
+
+
+
+        <div class="overview-card purple-card">
+
+            <div class="overview-icon">
+                👨‍💼
+            </div>
+
+            <h3>
+                Employers
+            </h3>
+
+            <p>
+                Post vacancies, receive applications,
+                view applicants and manage hiring decisions.
+            </p>
+
+            <div class="overview-link">
+                Hire staff →
+            </div>
+
+        </div>
+
+
+
+        <div class="overview-card green-card">
+
+            <div class="overview-icon">
+                🤝
+            </div>
+
+            <h3>
+                Local Connection
+            </h3>
+
+            <p>
+                A simple bridge between nearby businesses
+                and people looking for local work.
+            </p>
+
+            <div class="overview-link">
+                Connect locally →
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     WORKFLOW DIAGRAM
+========================= -->
+
+<section class="workflow-section">
+
+    <div class="section-heading">
+
+        <span class="section-label">
+            HOW IT WORKS
+        </span>
+
+        <h2>
+            From job search to hiring decision
+        </h2>
+
+        <p>
+            Both sides follow a simple workflow that keeps
+            the hiring journey clear.
+        </p>
+
+    </div>
+
+
+    <div class="workflow-diagram">
+
+
+        <!-- JOB SEEKER -->
+
+        <div class="workflow-side seeker-side">
+
+            <div class="workflow-title">
+                🔎 Job Seeker
+            </div>
+
+
+            <div class="workflow-step">
+                <span>01</span>
+                Register / Login
+            </div>
+
+            <div class="workflow-line"></div>
+
+
+            <div class="workflow-step">
+                <span>02</span>
+                Create Profile
+            </div>
+
+            <div class="workflow-line"></div>
+
+
+            <div class="workflow-step">
+                <span>03</span>
+                Search Jobs
+            </div>
+
+            <div class="workflow-line"></div>
+
+
+            <div class="workflow-step">
+                <span>04</span>
+                Apply
+            </div>
+
+        </div>
+
+
+
+        <!-- CENTER -->
+
+        <div class="workflow-center">
+
+            <div class="workflow-circle">
+                ↔
+            </div>
+
+            <div class="connection-line"></div>
+
+            <div class="decision-box">
+
+                <strong>
+                    Hiring Decision
+                </strong>
+
+                <span>
+                    Accept / Reject
+                </span>
+
+            </div>
+
+            <div class="connection-line"></div>
+
+            <div class="result-box">
+
+                ✓ Application Status Updated
+
+            </div>
+
+        </div>
+
+
+
+        <!-- EMPLOYER -->
+
+        <div class="workflow-side employer-side">
+
+            <div class="workflow-title">
+                👨‍💼 Employer
+            </div>
+
+
+            <div class="workflow-step">
+                <span>01</span>
+                Register / Login
+            </div>
+
+            <div class="workflow-line"></div>
+
+
+            <div class="workflow-step">
+                <span>02</span>
+                Post a Job
+            </div>
+
+            <div class="workflow-line"></div>
+
+
+            <div class="workflow-step">
+                <span>03</span>
+                Receive Applications
+            </div>
+
+            <div class="workflow-line"></div>
+
+
+            <div class="workflow-step">
+                <span>04</span>
+                Review Applicant
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     FEATURES
+========================= -->
+
+<section class="features-section">
+
+    <div class="section-heading">
+
+        <span class="section-label">
+            CORE FEATURES
+        </span>
+
+        <h2>
+            Everything needed for local hiring
+        </h2>
+
+        <p>
+            Simple features designed for both job seekers
+            and local employers.
+        </p>
+
+    </div>
+
+
+    <div class="professional-features">
+
+
+        <div class="pro-feature">
+
+            <div class="feature-number">
+                01
+            </div>
+
+            <div class="pro-feature-icon">
+                🔐
+            </div>
+
+            <h3>
+                Registration & Login
+            </h3>
+
+            <p>
+                Separate access and dashboards for
+                job seekers, employers and administrators.
+            </p>
+
+        </div>
+
+
+
+        <div class="pro-feature">
+
+            <div class="feature-number">
+                02
+            </div>
+
+            <div class="pro-feature-icon">
+                📍
+            </div>
+
+            <h3>
+                Nearby Job Search
+            </h3>
+
+            <p>
+                Search opportunities using job details
+                and location.
+            </p>
+
+        </div>
+
+
+
+        <div class="pro-feature">
+
+            <div class="feature-number">
+                03
+            </div>
+
+            <div class="pro-feature-icon">
+                📄
+            </div>
+
+            <h3>
+                Online Applications
+            </h3>
+
+            <p>
+                Apply directly to available jobs and
+                avoid repeated applications.
+            </p>
+
+        </div>
+
+
+
+        <div class="pro-feature">
+
+            <div class="feature-number">
+                04
+            </div>
+
+            <div class="pro-feature-icon">
+                👤
+            </div>
+
+            <h3>
+                Applicant Profiles
+            </h3>
+
+            <p>
+                Employers can review applicant information
+                before making a decision.
+            </p>
+
+        </div>
+
+
+
+        <div class="pro-feature">
+
+            <div class="feature-number">
+                05
+            </div>
+
+            <div class="pro-feature-icon">
+                📊
+            </div>
+
+            <h3>
+                Application Tracking
+            </h3>
+
+            <p>
+                Job seekers can see whether an application
+                is pending, accepted or rejected.
+            </p>
+
+        </div>
+
+
+
+        <div class="pro-feature">
+
+            <div class="feature-number">
+                06
+            </div>
+
+            <div class="pro-feature-icon">
+                ⚡
+            </div>
+
+            <h3>
+                Simple Hiring Flow
+            </h3>
+
+            <p>
+                Employers can review applications and
+                take hiring decisions from one place.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     VISUAL DATA / CHART STYLE
+========================= -->
+
+<section class="visual-section">
+
+    <div class="visual-content">
+
+        <span class="section-label">
+            DIGITAL HIRING JOURNEY
+        </span>
+
+        <h2>
+            A clear path from opportunity to outcome
+        </h2>
+
+        <p>
+            Kaam Nearby keeps every major step visible —
+            from discovering a vacancy to receiving an
+            application decision.
+        </p>
+
+
+        <div class="journey-list">
+
+            <div class="journey-item active">
+                <span>01</span>
+                <div>
+                    <strong>Discover</strong>
+                    <small>Find a nearby opportunity</small>
+                </div>
+            </div>
+
+
+            <div class="journey-item">
+                <span>02</span>
+                <div>
+                    <strong>Connect</strong>
+                    <small>View details and apply</small>
+                </div>
+            </div>
+
+
+            <div class="journey-item">
+                <span>03</span>
+                <div>
+                    <strong>Review</strong>
+                    <small>Employer checks applications</small>
+                </div>
+            </div>
+
+
+            <div class="journey-item">
+                <span>04</span>
+                <div>
+                    <strong>Decision</strong>
+                    <small>Application status is updated</small>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="visual-chart">
+
+        <div class="chart-header">
+
+            <div>
+                <strong>
+                    Hiring Workflow
+                </strong>
+
+                <small>
+                    Platform process
+                </small>
+            </div>
+
+            <span class="chart-icon">
+                ↗
+            </span>
+
+        </div>
+
+
+        <div class="chart-area">
+
+            <div class="chart-column">
+                <div class="chart-bar bar-one"></div>
+                <span>Discover</span>
+            </div>
+
+            <div class="chart-column">
+                <div class="chart-bar bar-two"></div>
+                <span>Apply</span>
+            </div>
+
+            <div class="chart-column">
+                <div class="chart-bar bar-three"></div>
+                <span>Review</span>
+            </div>
+
+            <div class="chart-column">
+                <div class="chart-bar bar-four"></div>
+                <span>Decision</span>
+            </div>
+
+        </div>
+
+
+        <div class="chart-footer">
+
+            <span>Job Seeker</span>
+
+            <div class="chart-dash"></div>
+
+            <span>Employer</span>
+
+            <div class="chart-dash"></div>
+
+            <span>Outcome</span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     TECHNOLOGY
+========================= -->
+
+<section class="technology-section">
+
+    <div class="section-heading">
+
+        <span class="section-label">
+            TECHNOLOGY STACK
+        </span>
+
+        <h2>
+            Built with modern web technologies
+        </h2>
+
+        <p>
+            A simple architecture connects the interface,
+            backend APIs and database.
+        </p>
+
+    </div>
+
+
+    <div class="tech-flow">
+
+        <div class="tech-box">
+
+            <span>01</span>
+
+            <strong>
+                Frontend
+            </strong>
+
+            <small>
+                HTML · CSS · JavaScript
+            </small>
+
+        </div>
+
+
+        <div class="tech-arrow">
+            →
+        </div>
+
+
+        <div class="tech-box">
+
+            <span>02</span>
+
+            <strong>
+                Backend
+            </strong>
+
+            <small>
+                Node.js · Express.js
+            </small>
+
+        </div>
+
+
+        <div class="tech-arrow">
+            →
+        </div>
+
+
+        <div class="tech-box">
+
+            <span>03</span>
+
+            <strong>
+                API
+            </strong>
+
+            <small>
+                REST API
+            </small>
+
+        </div>
+
+
+        <div class="tech-arrow">
+            →
+        </div>
+
+
+        <div class="tech-box">
+
+            <span>04</span>
+
+            <strong>
+                Database
+            </strong>
+
+            <small>
+                MongoDB Atlas
+            </small>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     CTA
+========================= -->
+
+<section class="final-cta">
+
+    <div>
+
+        <span class="section-label">
+            GET STARTED
+        </span>
+
+        <h2>
+            Ready to find your next opportunity?
+        </h2>
+
+        <p>
+            Join Kaam Nearby and make local hiring simpler.
+        </p>
+
+    </div>
+
+
+    <div class="cta-buttons">
+
+        <a href="jobseeker.html" class="primary-btn">
+            🔎 Find a Job
+        </a>
+
+        <a href="employer.html" class="secondary-btn">
+            👨‍💼 Post a Job
+        </a>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="professional-footer">
+
+    <div class="footer-main">
+
+        <div class="footer-brand">
+
+            <div class="brand footer-logo">
+                <span class="brand-icon">K</span>
+                <span>Kaam Nearby</span>
+            </div>
+
+            <p>
+                Connecting local job seekers with
+                nearby employers.
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <strong>
+                Platform
+            </strong>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="jobseeker.html">
+                Find Jobs
+            </a>
+
+            <a href="employer.html">
+                Post a Job
+            </a>
+
+            <a href="login.html">
+                Login
+            </a>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <strong>
+                Features
+            </strong>
+
+            <span>
+                Job Search
+            </span>
+
+            <span>
+                Online Applications
+            </span>
+
+            <span>
+                Applicant Profiles
+            </span>
+
+            <span>
+                Application Tracking
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <span>
+            © 2026 Kaam Nearby
+        </span>
+
+        <span>
+            Local Jobs & Staff Finder
+        </span>
+
+    </div>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
 </script>
 </body>
 
