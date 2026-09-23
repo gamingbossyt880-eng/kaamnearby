@@ -4488,3 +4488,114 @@ body:has(.register-box) {
     }
 
 }
+/* =========================================
+   PROFILE PHOTO
+========================================= */
+
+.profile-photo-section {
+
+    text-align: center;
+
+    margin-bottom: 28px;
+
+}
+
+
+.profile-photo-preview {
+
+    width: 120px;
+
+    height: 120px;
+
+    margin: 0 auto 15px;
+
+    border-radius: 50%;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eef2ff,
+            #f3e8ff
+        );
+
+    border:
+        4px solid #ffffff;
+
+    box-shadow:
+        0 8px 25px
+        rgba(0, 0, 0, 0.12);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+.profile-photo-preview img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: none;
+
+}
+
+
+#photoPlaceholder {
+
+    font-size: 48px;
+
+}
+
+
+.photo-upload-btn {
+
+    display: inline-block;
+
+    padding:
+        11px 20px;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #2563eb,
+            #7c3aed
+        );
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+}
+
+
+#photo {
+
+    display: none;
+
+}
+
+
+.photo-required-text {
+
+    margin-top: 8px;
+
+    color: #dc2626;
+
+    font-size: 12px;
+
+}
