@@ -623,7 +623,7 @@ app.get("/api/applications/job/:jobId", async (req, res) => {
 
 });
 // ===============================
-// CREATE / UPDATE PROFILE
+// CREATE / UPDATE JOB SEEKER PROFILE
 // ===============================
 
 app.post("/api/profile", async (req, res) => {
@@ -636,8 +636,14 @@ app.post("/api/profile", async (req, res) => {
             phone,
             skills,
             experience,
-            location
+            location,
+            photo
         } = req.body;
+
+
+        // ==========================================
+        // CHECK ALL REQUIRED FIELDS
+        // ==========================================
 
         if (
             !name ||
@@ -645,40 +651,103 @@ app.post("/api/profile", async (req, res) => {
             !phone ||
             !skills ||
             !experience ||
-            !location
+            !location ||
+            !photo
         ) {
 
             return res.status(400).json({
-                message: "All fields are required"
+
+                message:
+                    "Name, email, phone, skills, experience, location and photo are required"
+
             });
 
         }
 
-        const profile = await Profile.findOneAndUpdate(
-            { email: email },
 
-            {
-                name: name,
-                email: email,
-                phone: phone,
-                skills: skills,
-                experience: experience,
-                location: location
-            },
+        // ==========================================
+        // CHECK USER
+        // PROFILE IS ONLY FOR JOB SEEKER
+        // ==========================================
 
-            {
-                new: true,
-                upsert: true
-            }
-        );
+        const user =
+            await User.findOne({
+                email: email
+            });
+
+
+        if (!user) {
+
+            return res.status(404).json({
+
+                message:
+                    "User not found"
+
+            });
+
+        }
+
+
+        // ==========================================
+        // EMPLOYER NOT ALLOWED
+        // ==========================================
+
+        if (user.role !== "jobseeker") {
+
+            return res.status(403).json({
+
+                message:
+                    "Profile is only available for Job Seekers"
+
+            });
+
+        }
+
+
+        // ==========================================
+        // SAVE / UPDATE PROFILE
+        // ==========================================
+
+        const profile =
+            await Profile.findOneAndUpdate(
+
+                {
+                    email: email
+                },
+
+                {
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    skills: skills,
+                    experience: experience,
+                    location: location,
+                    photo: photo
+                },
+
+                {
+                    new: true,
+                    upsert: true,
+                    runValidators: true
+                }
+
+            );
+
+
+        // ==========================================
+        // SUCCESS
+        // ==========================================
 
         res.status(200).json({
 
-            message: "Profile saved successfully!",
+            message:
+                "Profile saved successfully!",
 
-            profile: profile
+            profile:
+                profile
 
         });
+
 
     } catch (error) {
 
@@ -687,18 +756,20 @@ app.post("/api/profile", async (req, res) => {
             error
         );
 
+
         res.status(500).json({
 
-            message: "Server error",
+            message:
+                "Server error",
 
-            error: error.message
+            error:
+                error.message
 
         });
 
     }
 
 });
-
 
 // ===============================
 // GET PROFILE
