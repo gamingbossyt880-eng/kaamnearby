@@ -1,455 +1,289 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
 
     const container =
         document.getElementById("applicationsContainer");
 
+    const employerEmail =
+        localStorage.getItem("userEmail");
+
+    const token =
+        localStorage.getItem("token");
+
+
     // ==========================================
-    // GET JOB ID FROM URL
+    // LOGIN CHECK
     // ==========================================
 
-    const urlParams =
-        new URLSearchParams(window.location.search);
-
-    const jobId =
-        urlParams.get("jobId");
-
-    console.log("Job ID:", jobId);
-
-
-    if (!container) {
-        console.error("applicationsContainer not found");
-        return;
-    }
-
-
-    if (!jobId) {
+    if (!employerEmail || !token) {
 
         container.innerHTML =
-            "<p>Job ID not found.</p>";
+            "<p>Please login as Employer first.</p>";
 
         return;
     }
 
 
-    // ==========================================
-    // LOAD APPLICANTS
-    // ==========================================
+    try {
 
-    async function loadApplicants() {
+        // ==========================================
+        // GET EMPLOYER APPLICATIONS
+        // ==========================================
 
-        try {
-
-            console.log(
-                "Loading applications for Job ID:",
-                jobId
+        const response =
+            await fetch(
+                "https://kaamnearby.onrender.com/api/applications?employerEmail=" +
+                encodeURIComponent(employerEmail)
             );
 
 
-            const response = await fetch(
-                "https://kaamnearby.onrender.com/api/applications/job/" +
-                encodeURIComponent(jobId)
-            );
+        const applications =
+            await response.json();
 
 
-            const applications =
-                await response.json();
+        if (!response.ok) {
+
+            container.innerHTML =
+                "<p>" +
+                (applications.message ||
+                    "Unable to load applications") +
+                "</p>";
+
+            return;
+        }
 
 
-            console.log(
-                "Applications:",
-                applications
-            );
+        // ==========================================
+        // NO APPLICATIONS
+        // ==========================================
+
+        if (
+            !applications ||
+            applications.length === 0
+        ) {
+
+            container.innerHTML =
+                "<p>No applicants found.</p>";
+
+            return;
+        }
 
 
-            if (!response.ok) {
+        // ==========================================
+        // CLEAR CONTAINER
+        // ==========================================
 
-                container.innerHTML =
-                    "<p>Unable to load applicants.</p>";
-
-                return;
-            }
+        container.innerHTML = "";
 
 
-            if (
-                !Array.isArray(applications) ||
-                applications.length === 0
-            ) {
+        // ==========================================
+        // SHOW APPLICATIONS
+        // ==========================================
 
-                container.innerHTML =
-                    "<p>No applicants for this job yet.</p>";
-
-                return;
-            }
-
-
-            container.innerHTML = "";
-
-
-            // ==========================================
-            // DISPLAY APPLICANTS
-            // ==========================================
-
-            applications.forEach((application) => {
+        applications.forEach(
+            (application) => {
 
                 const card =
-                    document.createElement("div");
+                    document.createElement(
+                        "div"
+                    );
 
                 card.className =
                     "application-card";
 
-
-                // Job information
 
                 const job =
                     application.jobId;
 
 
                 const jobTitle =
-                    job && typeof job === "object"
+                    job
                         ? job.jobTitle
-                        : "Job not available";
+                        : "Job";
 
 
-                const shopName =
-                    job && typeof job === "object"
-                        ? job.shopName
-                        : "Not available";
-
-
-                const location =
-                    job && typeof job === "object"
-                        ? job.location
-                        : "Not available";
-
-
-                // ==========================================
-                // APPLICANT CARD
-                // ==========================================
+                // ==================================
+                // CARD
+                // ==================================
 
                 card.innerHTML = `
 
-                    <h2>
-                        ${application.applicantName || "No Name"}
-                    </h2>
-
+                    <h3>
+                        ${application.applicantName}
+                    </h3>
 
                     <p>
                         <strong>Email:</strong>
-                        ${application.applicantEmail || "Not provided"}
+                        ${application.applicantEmail}
                     </p>
 
-
                     <p>
-                        <strong>Applied For:</strong>
+                        <strong>Job:</strong>
                         ${jobTitle}
                     </p>
 
-
-                    <p>
-                        <strong>Shop:</strong>
-                        ${shopName}
-                    </p>
-
-
-                    <p>
-                        <strong>Location:</strong>
-                        ${location}
-                    </p>
-
-
-                    <p>
-                        <strong>Phone:</strong>
-
-                        <span class="phone">
-                            Loading...
-                        </span>
-                    </p>
-
-
-                    <p>
-                        <strong>Skills:</strong>
-
-                        <span class="skills">
-                            Loading...
-                        </span>
-                    </p>
-
-
-                    <p>
-                        <strong>Experience:</strong>
-
-                        <span class="experience">
-                            Loading...
-                        </span>
-                    </p>
-
-
                     <p>
                         <strong>Status:</strong>
-
-                        <span id="status-${application._id}">
-                            ${application.status || "Pending"}
-                        </span>
+                        ${application.status}
                     </p>
 
 
-                    <button
-                        class="view-profile-btn"
-                        data-email="${application.applicantEmail}">
-                        View Profile
-                    </button>
+                    <div class="application-buttons">
+
+                        <button
+                            class="view-profile-btn"
+                            data-email="${application.applicantEmail}"
+                            data-job-id="${job ? job._id : ""}"
+                        >
+                            👤 View Profile
+                        </button>
 
 
-                    <button
-                        class="accept-btn"
-                        data-id="${application._id}">
-                        Accept
-                    </button>
+                        <button
+                            class="accept-btn"
+                            data-id="${application._id}"
+                        >
+                            Accept
+                        </button>
 
 
-                    <button
-                        class="reject-btn"
-                        data-id="${application._id}">
-                        Reject
-                    </button>
+                        <button
+                            class="reject-btn"
+                            data-id="${application._id}"
+                        >
+                            Reject
+                        </button>
 
-
-                    <hr>
+                    </div>
 
                 `;
 
 
                 container.appendChild(card);
 
+            }
+        );
 
-                // Load profile
 
-                loadApplicantProfile(
-                    application.applicantEmail,
-                    card
+        // ==========================================
+        // VIEW PROFILE BUTTON
+        // ==========================================
+
+        document
+            .querySelectorAll(".view-profile-btn")
+            .forEach((button) => {
+
+                button.addEventListener(
+                    "click",
+                    () => {
+
+                        const email =
+                            button.dataset.email;
+
+                        const jobId =
+                            button.dataset.jobId;
+
+
+                        if (!email || !jobId) {
+
+                            alert(
+                                "Applicant information is missing."
+                            );
+
+                            return;
+                        }
+
+
+                        // Save temporarily
+                        localStorage.setItem(
+                            "viewApplicantEmail",
+                            email
+                        );
+
+                        localStorage.setItem(
+                            "viewApplicantJobId",
+                            jobId
+                        );
+
+
+                        // Open profile page
+                        window.location.href =
+                            "applicantprofile.html";
+
+                    }
                 );
 
             });
 
 
-            // ==========================================
-            // VIEW PROFILE
-            // ==========================================
+        // ==========================================
+        // ACCEPT BUTTON
+        // ==========================================
 
-            document
-                .querySelectorAll(".view-profile-btn")
-                .forEach((button) => {
+        document
+            .querySelectorAll(".accept-btn")
+            .forEach((button) => {
 
-                    button.addEventListener(
-                        "click",
-                        () => {
+                button.addEventListener(
+                    "click",
+                    async () => {
 
-                            const email =
-                                button.getAttribute(
-                                    "data-email"
-                                );
+                        await updateStatus(
+                            button.dataset.id,
+                            "Accepted"
+                        );
 
-
-                            window.location.href =
-                                "applicantprofile.html?email=" +
-                                encodeURIComponent(email);
-
-                        }
-                    );
-
-                });
-
-
-            // ==========================================
-            // ACCEPT
-            // ==========================================
-
-            document
-                .querySelectorAll(".accept-btn")
-                .forEach((button) => {
-
-                    button.addEventListener(
-                        "click",
-                        async () => {
-
-                            const applicationId =
-                                button.getAttribute(
-                                    "data-id"
-                                );
-
-
-                            await updateStatus(
-                                applicationId,
-                                "Accepted"
-                            );
-
-                        }
-                    );
-
-                });
-
-
-            // ==========================================
-            // REJECT
-            // ==========================================
-
-            document
-                .querySelectorAll(".reject-btn")
-                .forEach((button) => {
-
-                    button.addEventListener(
-                        "click",
-                        async () => {
-
-                            const applicationId =
-                                button.getAttribute(
-                                    "data-id"
-                                );
-
-
-                            await updateStatus(
-                                applicationId,
-                                "Rejected"
-                            );
-
-                        }
-                    );
-
-                });
-
-        } catch (error) {
-
-            console.error(
-                "LOAD APPLICANTS ERROR:",
-                error
-            );
-
-
-            container.innerHTML =
-                "<p>Cannot connect to server.</p>";
-
-        }
-
-    }
-
-
-    // ==========================================
-    // LOAD APPLICANT PROFILE
-    // ==========================================
-
-    async function loadApplicantProfile(
-        email,
-        card
-    ) {
-
-        try {
-
-            const response =
-                await fetch(
-                    "https://kaamnearby.onrender.com/api/profile?email=" +
-                    encodeURIComponent(email)
+                    }
                 );
 
-
-            if (!response.ok) {
-
-                card.querySelector(
-                    ".phone"
-                ).innerText =
-                    "Not provided";
+            });
 
 
-                card.querySelector(
-                    ".skills"
-                ).innerText =
-                    "Not provided";
+        // ==========================================
+        // REJECT BUTTON
+        // ==========================================
+
+        document
+            .querySelectorAll(".reject-btn")
+            .forEach((button) => {
+
+                button.addEventListener(
+                    "click",
+                    async () => {
+
+                        await updateStatus(
+                            button.dataset.id,
+                            "Rejected"
+                        );
+
+                    }
+                );
+
+            });
 
 
-                card.querySelector(
-                    ".experience"
-                ).innerText =
-                    "Not provided";
+    } catch (error) {
 
+        console.error(
+            "APPLICATIONS ERROR:",
+            error
+        );
 
-                return;
-            }
-
-
-            const profile =
-                await response.json();
-
-
-            console.log(
-                "Applicant profile:",
-                profile
-            );
-
-
-            card.querySelector(
-                ".phone"
-            ).innerText =
-                profile.phone || "Not provided";
-
-
-            card.querySelector(
-                ".skills"
-            ).innerText =
-                profile.skills || "Not provided";
-
-
-            card.querySelector(
-                ".experience"
-            ).innerText =
-                profile.experience || "Not provided";
-
-
-        } catch (error) {
-
-            console.error(
-                "PROFILE ERROR:",
-                error
-            );
-
-
-            card.querySelector(
-                ".phone"
-            ).innerText =
-                "Not available";
-
-
-            card.querySelector(
-                ".skills"
-            ).innerText =
-                "Not available";
-
-
-            card.querySelector(
-                ".experience"
-            ).innerText =
-                "Not available";
-
-        }
+        container.innerHTML =
+            "<p>Unable to connect to server.</p>";
 
     }
 
 
     // ==========================================
-    // UPDATE APPLICATION STATUS
+    // UPDATE STATUS
     // ==========================================
 
     async function updateStatus(
         applicationId,
-        newStatus
+        status
     ) {
 
         try {
-
-            console.log(
-                "Updating:",
-                applicationId,
-                newStatus
-            );
-
 
             const response =
                 await fetch(
@@ -459,13 +293,21 @@ document.addEventListener("DOMContentLoaded", () => {
                         method: "PUT",
 
                         headers: {
+
                             "Content-Type":
-                                "application/json"
+                                "application/json",
+
+                            "Authorization":
+                                "Bearer " + token
+
                         },
 
                         body: JSON.stringify({
-                            status: newStatus
+
+                            status: status
+
                         })
+
                     }
                 );
 
@@ -476,33 +318,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (response.ok) {
 
-                const statusElement =
-                    document.getElementById(
-                        "status-" +
-                        applicationId
-                    );
-
-
-                if (statusElement) {
-
-                    statusElement.innerText =
-                        newStatus;
-
-                }
-
-
                 alert(
                     "Application " +
-                    newStatus +
+                    status.toLowerCase() +
                     " successfully!"
                 );
 
+                location.reload();
 
             } else {
 
                 alert(
                     data.message ||
-                    "Failed to update application"
+                    "Unable to update status"
                 );
 
             }
@@ -511,24 +339,16 @@ document.addEventListener("DOMContentLoaded", () => {
         } catch (error) {
 
             console.error(
-                "UPDATE STATUS ERROR:",
+                "STATUS ERROR:",
                 error
             );
 
-
             alert(
-                "Server error while updating application"
+                "Server connection failed."
             );
 
         }
 
     }
-
-
-    // ==========================================
-    // START
-    // ==========================================
-
-    loadApplicants();
 
 });
