@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const profileSchema = new mongoose.Schema({
+
     name: {
         type: String,
         required: true
@@ -30,9 +31,16 @@ const profileSchema = new mongoose.Schema({
     location: {
         type: String,
         required: true
+    },
+
+    photo: {
+        type: String,
+        required: true
     }
+
 });
 
-const Profile = mongoose.model("Profile", profileSchema);
+const Profile =
+    mongoose.model("Profile", profileSchema);
 
 module.exports = Profile;
