@@ -544,11 +544,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                 if (response.ok) {
 
-                    message.innerText =
-                        "Profile saved successfully!";
+                   message.innerText =
+    "Profile saved successfully!";
 
-                    message.style.color =
-                        "green";
+message.style.color =
+    "green";
+
+setTimeout(() => {
+
+    window.location.href =
+        "jobseeker.html";
+
+}, 1200);
 
 
                     // Keep photo visible
