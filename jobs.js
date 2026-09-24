@@ -16,15 +16,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         document.getElementById("clearBtn");
 
 
-    let jobs = [];
-
-    let appliedJobIds = [];
-
-
-    // ==========================================
-    // CHECK LOGIN
-    // ==========================================
-
     const applicantEmail =
         localStorage.getItem("userEmail");
 
@@ -34,6 +25,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     const userRole =
         localStorage.getItem("userRole");
 
+
+    let jobs = [];
+    let appliedJobIds = [];
+    let profileComplete = false;
+
+
+    // ==========================================
+    // LOGIN CHECK
+    // ==========================================
 
     if (!applicantEmail) {
 
@@ -45,26 +45,15 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
     // ==========================================
-    // PROFILE STATUS
-    // ==========================================
-
-    let profileComplete = false;
-
-
-    // ==========================================
     // CHECK JOB SEEKER PROFILE
     // ==========================================
 
     async function checkJobSeekerProfile() {
 
-        // Profile requirement is ONLY for Job Seeker
-
         if (userRole !== "jobseeker") {
             return;
         }
 
-
-        // Get profile interface elements
 
         const progressBar =
             document.getElementById(
@@ -92,24 +81,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             );
 
 
-        // If profile interface is not present,
-        // don't stop the jobs page
-
-        if (
-            !progressBar ||
-            !progressText ||
-            !statusText ||
-            !button
-        ) {
-
-            console.log(
-                "Profile status interface not found."
-            );
-
-            return;
-        }
-
-
         try {
 
             const response =
@@ -122,38 +93,37 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
             // ==========================================
-            // PROFILE DOES NOT EXIST
+            // PROFILE NOT FOUND
             // ==========================================
 
             if (!response.ok) {
 
                 profileComplete = false;
 
+                if (progressBar) {
+                    progressBar.style.width = "0%";
+                }
 
-                progressBar.style.width =
-                    "0%";
+                if (progressText) {
+                    progressText.innerText =
+                        "0/7 Details Completed";
+                }
 
+                if (statusText) {
+                    statusText.innerText =
+                        "Complete all required details before applying for jobs.";
+                }
 
-                progressText.innerText =
-                    "0/7 Details Completed";
-
-
-                statusText.innerText =
-                    "Complete all required details before applying for jobs.";
-
-
-                button.innerText =
-                    "Complete Profile →";
-
+                if (button) {
+                    button.innerText =
+                        "Complete Profile →";
+                }
 
                 if (card) {
-
                     card.classList.remove(
                         "profile-complete"
                     );
-
                 }
-
 
                 return;
             }
@@ -170,119 +140,87 @@ document.addEventListener("DOMContentLoaded", async () => {
             let completed = 0;
 
 
-            // ==========================================
-            // NAME
-            // ==========================================
-
+            // Name
             if (
                 profile.name &&
                 profile.name.trim() !== ""
             ) {
-
                 completed++;
-
             }
 
 
-            // ==========================================
-            // EMAIL
-            // ==========================================
-
+            // Email
             if (
                 profile.email &&
                 profile.email.trim() !== ""
             ) {
-
                 completed++;
-
             }
 
 
-            // ==========================================
-            // PHONE
-            // ==========================================
-
+            // Phone
             if (
                 profile.phone &&
                 profile.phone.trim() !== ""
             ) {
-
                 completed++;
-
             }
 
 
-            // ==========================================
-            // SKILLS
-            // ==========================================
-
+            // Skills
             if (
                 profile.skills &&
                 profile.skills.trim() !== ""
             ) {
-
                 completed++;
-
             }
 
 
-            // ==========================================
-            // EXPERIENCE
-            // ==========================================
-
+            // Experience
             if (
                 profile.experience &&
                 profile.experience.trim() !== ""
             ) {
-
                 completed++;
-
             }
 
 
-            // ==========================================
-            // LOCATION
-            // ==========================================
-
+            // Location
             if (
                 profile.location &&
                 profile.location.trim() !== ""
             ) {
-
                 completed++;
-
             }
 
 
-            // ==========================================
-            // PROFILE PHOTO
-            // ==========================================
-
+            // Profile Photo
             if (
                 profile.photo &&
                 profile.photo.trim() !== ""
             ) {
-
                 completed++;
-
             }
 
 
             // ==========================================
-            // CALCULATE PERCENTAGE
+            // UPDATE PROGRESS
             // ==========================================
 
             const percentage =
                 (completed / 7) * 100;
 
 
-            progressBar.style.width =
-                percentage + "%";
+            if (progressBar) {
+                progressBar.style.width =
+                    percentage + "%";
+            }
 
-
-            progressText.innerText =
-                completed +
-                "/7 Details Completed";
+            if (progressText) {
+                progressText.innerText =
+                    completed +
+                    "/7 Details Completed";
+            }
 
 
             // ==========================================
@@ -295,48 +233,41 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
                 if (card) {
-
                     card.classList.add(
                         "profile-complete"
                     );
-
                 }
 
+                if (statusText) {
+                    statusText.innerText =
+                        "Your profile is complete. You can now apply for jobs.";
+                }
 
-                statusText.innerText =
-                    "Your profile is complete. You can now apply for jobs.";
+                if (button) {
+                    button.innerText =
+                        "View Profile →";
+                }
 
-
-                button.innerText =
-                    "View Profile →";
-
-            }
-
-
-            // ==========================================
-            // PROFILE INCOMPLETE
-            // ==========================================
-
-            else {
+            } else {
 
                 profileComplete = false;
 
 
                 if (card) {
-
                     card.classList.remove(
                         "profile-complete"
                     );
-
                 }
 
+                if (statusText) {
+                    statusText.innerText =
+                        "Complete all required details before applying for jobs.";
+                }
 
-                statusText.innerText =
-                    "Complete all required details before applying for jobs.";
-
-
-                button.innerText =
-                    "Complete Profile →";
+                if (button) {
+                    button.innerText =
+                        "Complete Profile →";
+                }
 
             }
 
@@ -368,11 +299,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
             if (!response.ok) {
-
                 throw new Error(
                     "Unable to load jobs"
                 );
-
             }
 
 
@@ -381,7 +310,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
             // ==========================================
-            // GET USER APPLICATIONS
+            // GET APPLICATIONS
             // ==========================================
 
             const applicationResponse =
@@ -423,7 +352,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                 error
             );
 
-
             jobsContainer.innerHTML =
                 "<p>Cannot connect to server.</p>";
 
@@ -447,7 +375,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                 "<p>No matching jobs found.</p>";
 
             return;
-
         }
 
 
@@ -456,14 +383,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             const jobCard =
                 document.createElement("div");
 
-
             jobCard.className =
                 "job-card";
 
-
-            // ==========================================
-            // CHECK ALREADY APPLIED
-            // ==========================================
 
             const alreadyApplied =
                 appliedJobIds.includes(
@@ -496,10 +418,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             }
 
-
-            // ==========================================
-            // JOB CARD
-            // ==========================================
 
             jobCard.innerHTML = `
 
@@ -558,17 +476,13 @@ document.addEventListener("DOMContentLoaded", async () => {
                     "click",
                     async () => {
 
-
                         const jobId =
                             button.getAttribute(
                                 "data-job-id"
                             );
 
 
-                        // ==========================================
                         // LOGIN CHECK
-                        // ==========================================
-
                         if (
                             !applicantName ||
                             !applicantEmail
@@ -579,14 +493,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                             );
 
                             return;
-
                         }
 
 
-                        // ==========================================
-                        // JOB SEEKER PROFILE CHECK
-                        // ==========================================
-
+                        // PROFILE CHECK
                         if (
                             userRole === "jobseeker" &&
                             !profileComplete
@@ -611,22 +521,15 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                                 window.location.href =
                                     "profile.html";
-
                             }
 
-
                             return;
-
                         }
 
 
-                        // ==========================================
                         // DISABLE BUTTON
-                        // ==========================================
-
                         button.disabled =
                             true;
-
 
                         button.innerText =
                             "Applying...";
@@ -647,7 +550,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                                         body:
                                             JSON.stringify({
-
                                                 jobId:
                                                     jobId,
 
@@ -656,7 +558,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                                                 applicantEmail:
                                                     applicantEmail
-
                                             })
                                     }
                                 );
@@ -665,10 +566,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                             const data =
                                 await response.json();
 
-
-                            // ==========================================
-                            // APPLICATION SUCCESS
-                            // ==========================================
 
                             if (response.ok) {
 
@@ -686,15 +583,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                     jobs
                                 );
 
-
-                            }
-
-
-                            // ==========================================
-                            // APPLICATION ERROR
-                            // ==========================================
-
-                            else {
+                            } else {
 
                                 alert(
                                     data.message ||
@@ -705,10 +594,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 button.disabled =
                                     false;
 
-
                                 button.innerText =
                                     "Apply Now";
-
                             }
 
 
@@ -719,7 +606,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 error
                             );
 
-
                             alert(
                                 "Cannot connect to server."
                             );
@@ -728,10 +614,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                             button.disabled =
                                 false;
 
-
                             button.innerText =
                                 "Apply Now";
-
                         }
 
                     }
@@ -749,30 +633,31 @@ document.addEventListener("DOMContentLoaded", async () => {
     function searchJobs() {
 
         const searchText =
-            searchInput.value
-                .toLowerCase()
-                .trim();
+            searchInput
+                ? searchInput.value
+                    .toLowerCase()
+                    .trim()
+                : "";
 
 
         const locationText =
-            locationInput.value
-                .toLowerCase()
-                .trim();
+            locationInput
+                ? locationInput.value
+                    .toLowerCase()
+                    .trim()
+                : "";
 
 
         const filteredJobs =
             jobs.filter((job) => {
 
-
                 const jobTitle =
                     (job.jobTitle || "")
                         .toLowerCase();
 
-
                 const shopName =
                     (job.shopName || "")
                         .toLowerCase();
-
 
                 const location =
                     (job.location || "")
@@ -835,15 +720,15 @@ document.addEventListener("DOMContentLoaded", async () => {
             "click",
             () => {
 
-                searchInput.value =
-                    "";
+                if (searchInput) {
+                    searchInput.value = "";
+                }
 
-                locationInput.value =
-                    "";
+                if (locationInput) {
+                    locationInput.value = "";
+                }
 
-                displayJobs(
-                    jobs
-                );
+                displayJobs(jobs);
 
             }
         );
@@ -881,6 +766,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     await checkJobSeekerProfile();
 
-    loadJobs();
+    await loadJobs();
 
 });
