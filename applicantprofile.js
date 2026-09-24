@@ -1,101 +1,116 @@
 document.addEventListener("DOMContentLoaded", async () => {
 
-    const container =
-        document.getElementById("profileContainer");
+    const message = document.getElementById("profileMessage");
 
-    const urlParams =
-        new URLSearchParams(window.location.search);
+    const employerRole = localStorage.getItem("userRole");
+    const token = localStorage.getItem("token");
 
-    const email =
-        urlParams.get("email");
+    const applicantEmail =
+        localStorage.getItem("viewApplicantEmail");
 
-    if (!email) {
+    const jobId =
+        localStorage.getItem("viewApplicantJobId");
 
-        container.innerHTML =
-            "<p>Applicant email not found.</p>";
 
+    if (
+        employerRole !== "employer" ||
+        !token
+    ) {
+        message.innerText =
+            "Please login as an employer first.";
+        message.style.color = "red";
         return;
     }
 
+
+    if (!applicantEmail || !jobId) {
+        message.innerText =
+            "Applicant information not found.";
+        message.style.color = "red";
+        return;
+    }
+
+
     try {
 
-        const response =
-            await fetch(
-                "https://kaamnearby.onrender.com/api/profile?email=" +
-                encodeURIComponent(email)
-            );
+        message.innerText =
+            "Loading applicant profile...";
 
-        const profile =
-            await response.json();
+        const response = await fetch(
+            "https://kaamnearby.onrender.com/api/employer/applicant-profile?jobId=" +
+            encodeURIComponent(jobId) +
+            "&email=" +
+            encodeURIComponent(applicantEmail),
+            {
+                method: "GET",
+                headers: {
+                    "Authorization": "Bearer " + token
+                }
+            }
+        );
+
+
+        const data = await response.json();
+
 
         if (!response.ok) {
+            message.innerText =
+                data.message ||
+                "Unable to load applicant profile.";
 
-            container.innerHTML =
-                "<p>Profile not found.</p>";
-
+            message.style.color = "red";
             return;
         }
 
-        container.innerHTML = `
 
-            <div class="job-card">
+        document.getElementById("profileName").innerText =
+            data.name || "Not available";
 
-                <h2>${profile.name || "Not provided"}</h2>
+        document.getElementById("profileEmail").innerText =
+            data.email || "Not available";
 
-                <p>
-                    <strong>Email:</strong>
-                    ${profile.email || "Not provided"}
-                </p>
+        document.getElementById("profilePhone").innerText =
+            data.phone || "Not available";
 
-                <p>
-                    <strong>Phone:</strong>
-                    ${profile.phone || "Not provided"}
-                </p>
+        document.getElementById("profileSkills").innerText =
+            data.skills || "Not available";
 
-                <p>
-                    <strong>Skills:</strong>
-                    ${profile.skills || "Not provided"}
-                </p>
+        document.getElementById("profileExperience").innerText =
+            data.experience || "Not available";
 
-                <p>
-                    <strong>Experience:</strong>
-                    ${profile.experience || "Not provided"}
-                </p>
+        document.getElementById("profileLocation").innerText =
+            data.location || "Not available";
 
-                <p>
-                    <strong>Location:</strong>
-                    ${profile.location || "Not provided"}
-                </p>
 
-                <br>
+        const profilePhoto =
+            document.getElementById("profilePhoto");
 
-                <button onclick="contactApplicant('${profile.email}')">
-                    Contact Applicant
-                </button>
 
-            </div>
+        if (data.photo) {
+            profilePhoto.src = data.photo;
+            profilePhoto.style.display = "block";
+        } else {
+            profilePhoto.style.display = "none";
+        }
 
-        `;
+
+        message.innerText =
+            "Applicant profile loaded successfully.";
+
+        message.style.color = "green";
+
 
     } catch (error) {
 
         console.error(
-            "PROFILE ERROR:",
+            "APPLICANT PROFILE ERROR:",
             error
         );
 
-        container.innerHTML =
-            "<p>Cannot connect to server.</p>";
+        message.innerText =
+            "Cannot connect to server.";
+
+        message.style.color = "red";
     }
 
 });
-
-
-function contactApplicant(email) {
-
-    window.location.href =
-        "mailto:" +
-        email +
-        "?subject=Job Opportunity - Kaam Nearby";
-
-}
