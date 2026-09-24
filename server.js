@@ -1268,7 +1268,6 @@ app.post("/api/profile", async (req, res) => {
 
 });
 
-
 // =====================================================
 // GET JOB SEEKER PROFILE
 // =====================================================
@@ -1277,17 +1276,12 @@ app.get("/api/profile", async (req, res) => {
 
     try {
 
-        const email =
-            req.query.email;
-
+        const email = req.query.email;
 
         if (!email) {
 
             return res.status(400).json({
-
-                message:
-                    "Email is required"
-
+                message: "Email is required"
             });
 
         }
@@ -1295,27 +1289,30 @@ app.get("/api/profile", async (req, res) => {
 
         const profile =
             await Profile.findOne({
-
                 email: email
-
             });
 
 
         if (!profile) {
 
             return res.status(404).json({
-
-                message:
-                    "Profile not found"
-
+                message: "Profile not found"
             });
 
         }
 
 
-        res.status(200).json(
-            profile
-        );
+        res.status(200).json({
+
+            name: profile.name,
+            email: profile.email,
+            phone: profile.phone,
+            skills: profile.skills,
+            experience: profile.experience,
+            location: profile.location,
+            photo: profile.photo
+
+        });
 
 
     } catch (error) {
@@ -1326,16 +1323,12 @@ app.get("/api/profile", async (req, res) => {
         );
 
         res.status(500).json({
-
-            message: "Server error",
-            error: error.message
-
+            message: "Server error"
         });
 
     }
 
 });
-
 
 // =====================================================
 // ADMIN - GET ALL USERS
