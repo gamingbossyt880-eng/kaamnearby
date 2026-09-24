@@ -44,7 +44,55 @@ app.use((req, res, next) => {
 app.use(express.json({
     limit: "5mb"
 }));
+// =====================================================
+// AUTHENTICATION MIDDLEWARE
+// =====================================================
 
+function verifyToken(req, res, next) {
+
+    try {
+
+        const authHeader =
+            req.headers.authorization;
+
+        if (!authHeader) {
+
+            return res.status(401).json({
+                message: "Login required"
+            });
+
+        }
+
+        const token =
+            authHeader.split(" ")[1];
+
+        if (!token) {
+
+            return res.status(401).json({
+                message: "Token missing"
+            });
+
+        }
+
+        const decoded =
+            jwt.verify(
+                token,
+                process.env.JWT_SECRET
+            );
+
+        req.user = decoded;
+
+        next();
+
+    } catch (error) {
+
+        return res.status(401).json({
+            message: "Invalid or expired token"
+        });
+
+    }
+
+}
 
 // =====================================================
 // MONGODB CONNECTION
@@ -1327,6 +1375,169 @@ app.get("/api/admin/users", async (req, res) => {
     }
 
 });
+// =====================================================
+// EMPLOYER VIEW APPLICANT PROFILE
+// ONLY EMPLOYER WHO OWNS THE JOB CAN VIEW IT
+// =====================================================
+
+app.get(
+    "/api/employer/applicant-profile",
+    verifyToken,
+    async (req, res) => {
+
+        try {
+
+            // -----------------------------------------
+            // ONLY EMPLOYER
+            // -----------------------------------------
+
+            if (req.user.role !== "employer") {
+
+                return res.status(403).json({
+                    message:
+                        "Only employers can view applicant profiles"
+                });
+
+            }
+
+
+            const jobId =
+                req.query.jobId;
+
+            const applicantEmail =
+                req.query.email;
+
+
+            if (!jobId || !applicantEmail) {
+
+                return res.status(400).json({
+                    message:
+                        "Job ID and applicant email are required"
+                });
+
+            }
+
+
+            // -----------------------------------------
+            // CHECK JOB
+            // -----------------------------------------
+
+            const job =
+                await Job.findById(jobId);
+
+
+            if (!job) {
+
+                return res.status(404).json({
+                    message: "Job not found"
+                });
+
+            }
+
+
+            // -----------------------------------------
+            // CHECK JOB OWNER
+            // -----------------------------------------
+
+            if (
+                job.employerEmail !== req.user.email
+            ) {
+
+                return res.status(403).json({
+                    message:
+                        "You are not allowed to view applicants for this job"
+                });
+
+            }
+
+
+            // -----------------------------------------
+            // CHECK APPLICATION
+            // -----------------------------------------
+
+            const application =
+                await Application.findOne({
+
+                    jobId: jobId,
+
+                    applicantEmail:
+                        applicantEmail
+
+                });
+
+
+            if (!application) {
+
+                return res.status(403).json({
+                    message:
+                        "This applicant has not applied for your job"
+                });
+
+            }
+
+
+            // -----------------------------------------
+            // GET APPLICANT PROFILE
+            // -----------------------------------------
+
+            const profile =
+                await Profile.findOne({
+
+                    email: applicantEmail
+
+                });
+
+
+            if (!profile) {
+
+                return res.status(404).json({
+                    message:
+                        "Applicant profile not found"
+                });
+
+            }
+
+
+            // -----------------------------------------
+            // SEND PROFILE
+            // -----------------------------------------
+
+            res.status(200).json({
+
+                name: profile.name,
+
+                email: profile.email,
+
+                phone: profile.phone,
+
+                skills: profile.skills,
+
+                experience: profile.experience,
+
+                location: profile.location,
+
+                photo: profile.photo
+
+            });
+
+
+        } catch (error) {
+
+            console.error(
+                "EMPLOYER APPLICANT PROFILE ERROR:",
+                error
+            );
+
+            res.status(500).json({
+
+                message: "Server error"
+
+            });
+
+        }
+
+    }
+);
 
 
 // =====================================================
