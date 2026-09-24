@@ -60,9 +60,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         // Profile requirement is ONLY for Job Seeker
 
         if (userRole !== "jobseeker") {
-
             return;
-
         }
 
 
@@ -109,7 +107,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             );
 
             return;
-
         }
 
 
@@ -138,7 +135,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
                 progressText.innerText =
-                    "0/6 Details Completed";
+                    "0/7 Details Completed";
 
 
                 statusText.innerText =
@@ -159,7 +156,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
                 return;
-
             }
 
 
@@ -174,7 +170,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             let completed = 0;
 
 
-            // Name
+            // ==========================================
+            // NAME
+            // ==========================================
 
             if (
                 profile.name &&
@@ -186,7 +184,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
 
 
-            // Email
+            // ==========================================
+            // EMAIL
+            // ==========================================
 
             if (
                 profile.email &&
@@ -198,7 +198,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
 
 
-            // Phone
+            // ==========================================
+            // PHONE
+            // ==========================================
 
             if (
                 profile.phone &&
@@ -210,7 +212,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
 
 
-            // Skills
+            // ==========================================
+            // SKILLS
+            // ==========================================
 
             if (
                 profile.skills &&
@@ -222,7 +226,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
 
 
-            // Experience
+            // ==========================================
+            // EXPERIENCE
+            // ==========================================
 
             if (
                 profile.experience &&
@@ -234,7 +240,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
 
 
-            // Location
+            // ==========================================
+            // LOCATION
+            // ==========================================
 
             if (
                 profile.location &&
@@ -247,11 +255,25 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
             // ==========================================
+            // PROFILE PHOTO
+            // ==========================================
+
+            if (
+                profile.photo &&
+                profile.photo.trim() !== ""
+            ) {
+
+                completed++;
+
+            }
+
+
+            // ==========================================
             // CALCULATE PERCENTAGE
             // ==========================================
 
             const percentage =
-                (completed / 6) * 100;
+                (completed / 7) * 100;
 
 
             progressBar.style.width =
@@ -260,14 +282,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             progressText.innerText =
                 completed +
-                "/6 Details Completed";
+                "/7 Details Completed";
 
 
             // ==========================================
             // PROFILE COMPLETE
             // ==========================================
 
-            if (completed === 6) {
+            if (completed === 7) {
 
                 profileComplete = true;
 
@@ -288,8 +310,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                 button.innerText =
                     "View Profile →";
 
-
             }
+
 
             // ==========================================
             // PROFILE INCOMPLETE
@@ -579,7 +601,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                                     "• Phone\n" +
                                     "• Skills\n" +
                                     "• Experience\n" +
-                                    "• Location\n\n" +
+                                    "• Location\n" +
+                                    "• Profile Photo\n\n" +
                                     "Do you want to complete your profile now?"
                                 );
 
@@ -665,6 +688,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
                             }
+
 
                             // ==========================================
                             // APPLICATION ERROR
