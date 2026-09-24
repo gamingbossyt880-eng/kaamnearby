@@ -20,11 +20,15 @@ const PORT = process.env.PORT || 5000;
 // =====================================================
 
 app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
+
+    res.header(
+        "Access-Control-Allow-Origin",
+        "*"
+    );
 
     res.header(
         "Access-Control-Allow-Headers",
-        "Origin, X-Requested-With, Content-Type, Accept"
+        "Origin, X-Requested-With, Content-Type, Accept, Authorization"
     );
 
     res.header(
@@ -32,10 +36,12 @@ app.use((req, res, next) => {
         "GET, POST, PUT, DELETE, OPTIONS"
     );
 
+    if (req.method === "OPTIONS") {
+        return res.sendStatus(204);
+    }
+
     next();
 });
-
-
 // =====================================================
 // JSON DATA
 // 5 MB limit because profile photo is sent as Base64
