@@ -10,48 +10,207 @@
 
     <title>Applicant Profile - Kaam Nearby</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+          href="style.css">
+
+    <style>
+
+        body {
+            background: #f5f7fb;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .profile-page {
+            max-width: 700px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .profile-card {
+            background: white;
+            border-radius: 18px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .profile-header h1 {
+            margin-bottom: 8px;
+        }
+
+        #profilePhoto {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: none;
+            margin: 0 auto 20px;
+            border: 4px solid #e5e7eb;
+        }
+
+        .profile-info {
+            display: grid;
+            gap: 15px;
+        }
+
+        .info-box {
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .info-box strong {
+            display: block;
+            margin-bottom: 5px;
+            color: #374151;
+        }
+
+        .info-box span {
+            color: #111827;
+            word-break: break-word;
+        }
+
+        #profileMessage {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: 600;
+        }
+
+        .back-btn {
+            display: block;
+            width: fit-content;
+            margin: 25px auto 0;
+            padding: 11px 20px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+
+    </style>
 
 </head>
 
+
 <body>
 
-    <header>
 
-        <div class="logo">
-            Kaam Nearby
-        </div>
+    <div class="profile-page">
 
-        <nav>
-
-            <a href="employerjobs.html">
-                My Jobs
-            </a>
-
-            <a href="login.html">
-                Logout
-            </a>
-
-        </nav>
-
-    </header>
+        <div class="profile-card">
 
 
-    <main>
+            <div class="profile-header">
 
-        <div class="register-box">
+                <img
+                    id="profilePhoto"
+                    src=""
+                    alt="Applicant Profile Photo"
+                >
 
-            <h1>Applicant Profile</h1>
+                <h1 id="profileName">
+                    Loading...
+                </h1>
 
-            <div id="profileContainer">
-
-                <p>Loading profile...</p>
+                <p>
+                    Applicant Profile
+                </p>
 
             </div>
 
+
+            <div class="profile-info">
+
+
+                <div class="info-box">
+
+                    <strong>
+                        📧 Email
+                    </strong>
+
+                    <span id="profileEmail">
+                        Loading...
+                    </span>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <strong>
+                        📱 Phone
+                    </strong>
+
+                    <span id="profilePhone">
+                        Loading...
+                    </span>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <strong>
+                        🛠️ Skills
+                    </strong>
+
+                    <span id="profileSkills">
+                        Loading...
+                    </span>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <strong>
+                        💼 Experience
+                    </strong>
+
+                    <span id="profileExperience">
+                        Loading...
+                    </span>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <strong>
+                        📍 Location
+                    </strong>
+
+                    <span id="profileLocation">
+                        Loading...
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+            <p id="profileMessage">
+                Loading applicant profile...
+            </p>
+
+
+            <a
+                href="employerapplications.html"
+                class="back-btn"
+            >
+                ← Back to Applications
+            </a>
+
+
         </div>
 
-    </main>
+    </div>
 
 
     <script src="applicantprofile.js"></script>
