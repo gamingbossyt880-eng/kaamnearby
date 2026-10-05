@@ -4,364 +4,224 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kaam Nearby | Find Local Jobs & Staff</title>
-    <meta name="description" content="Kaam Nearby connects local job seekers with nearby employers and businesses.">
+    <title>Kaam Nearby | Local Jobs & Hiring Platform</title>
+    <meta name="description" content="Kaam Nearby connects local job seekers with nearby employers instantly.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- =========================
-     NAVBAR
-========================= -->
-<header class="main-header">
-    <div class="navbar">
-        <a href="index.html" class="brand">
-            <span class="brand-icon">K</span>
-            <span>Kaam Nearby</span>
-        </a>
-
-        <nav class="main-nav">
-            <a href="login.html" class="nav-login">Login</a>
-        </nav>
-    </div>
-</header>
-
-<main>
-
-<!-- =========================
-     HERO SECTION
-========================= -->
-<section class="professional-hero">
-    <div class="hero-content">
-        <div class="hero-badge">
-            <span>●</span> Local Jobs. Local Talent. One Platform.
-        </div>
-
-        <h1>
-            Find the right work <span>near you.</span>
-        </h1>
-
-        <p class="hero-description">
-            Kaam Nearby connects job seekers with nearby shops, businesses and employers — making local hiring simple, fast and accessible.
-        </p>
-
-        <div class="hero-actions">
-            <a href="login.html" class="primary-btn">
-                🔑 Login to Get Started
+    <!-- NAVBAR -->
+    <header class="navbar-header">
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo">
+                <div class="logo-icon">K</div>
+                <span class="logo-text">Kaam <span>Nearby</span></span>
             </a>
+            <nav class="nav-links">
+                <a href="login.html" class="btn-login-nav">Login →</a>
+            </nav>
         </div>
+    </header>
 
-        <div class="hero-points">
-            <div><span>✓</span> Search nearby jobs</div>
-            <div><span>✓</span> Apply online</div>
-            <div><span>✓</span> Track applications</div>
-        </div>
-    </div>
+    <main>
+        <!-- HERO SECTION -->
+        <section class="hero-section">
+            <div class="container hero-grid">
+                <div class="hero-text">
+                    <div class="badge-pill">
+                        <span class="badge-pulse"></span> Next-Gen Local Hiring
+                    </div>
+                    <h1 class="hero-title">
+                        Find local work & hire staff <span class="gradient-text">right near you.</span>
+                    </h1>
+                    <p class="hero-subtext">
+                        Connecting shopkeepers, small businesses, and local job seekers on one seamless digital platform. Simple, fast, and transparent.
+                    </p>
+                    <div class="hero-cta-group">
+                        <a href="login.html" class="btn-primary-lg">Get Started Now</a>
+                    </div>
+                    <div class="hero-metrics">
+                        <div class="metric-item">
+                            <h4>100%</h4>
+                            <p>Direct Connection</p>
+                        </div>
+                        <div class="metric-divider"></div>
+                        <div class="metric-item">
+                            <h4>Fast</h4>
+                            <p>Local Hiring</p>
+                        </div>
+                        <div class="metric-divider"></div>
+                        <div class="metric-item">
+                            <h4>Simple</h4>
+                            <p>Track Online</p>
+                        </div>
+                    </div>
+                </div>
 
-    <!-- Hero visual -->
-    <div class="hero-visual">
-        <div class="dashboard-preview">
-            <div class="preview-top">
-                <div class="mini-logo">K</div>
-                <div>
-                    <strong>Nearby Opportunities</strong>
-                    <small>Find work around you</small>
+                <div class="hero-visual-wrapper">
+                    <div class="glass-card main-visual-card">
+                        <div class="visual-header">
+                            <div class="window-dots">
+                                <span></span><span></span><span></span>
+                            </div>
+                            <span class="live-tag">● Live Matches</span>
+                        </div>
+                        
+                        <div class="preview-search-box">
+                            <span>🔍</span> Search helper, cashier, driver near you...
+                        </div>
+
+                        <div class="preview-job-item">
+                            <div class="job-badge-icon">🏪</div>
+                            <div class="preview-job-details">
+                                <h5>Store Assistant</h5>
+                                <p>📍 Within 2 km • ₹12,000/mo</p>
+                            </div>
+                            <span class="status-badge-green">Active</span>
+                        </div>
+
+                        <div class="preview-job-item">
+                            <div class="job-badge-icon">☕</div>
+                            <div class="preview-job-details">
+                                <h5>Cafe Staff & Manager</h5>
+                                <p>📍 Within 1.5 km • Full Time</p>
+                            </div>
+                            <span class="status-badge-green">Active</span>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <div class="search-preview">
-                <span>🔍</span>
-                <span>Search jobs or locations...</span>
-            </div>
-
-            <div class="job-preview">
-                <div class="job-icon">🏪</div>
-                <div class="job-info">
-                    <strong>Shop Assistant</strong>
-                    <span>📍 Nearby location</span>
-                    <span>💰 Salary available</span>
+        <!-- PLATFORM OVERVIEW -->
+        <section class="overview-section">
+            <div class="container">
+                <div class="section-header center">
+                    <span class="section-tag">TWO SIDES • ONE PLATFORM</span>
+                    <h2>Built for both Job Seekers and Business Owners</h2>
                 </div>
-                <div class="job-arrow">→</div>
-            </div>
 
-            <div class="job-preview">
-                <div class="job-icon">🍽️</div>
-                <div class="job-info">
-                    <strong>Restaurant Staff</strong>
-                    <span>📍 Nearby location</span>
-                    <span>🕐 Working hours available</span>
-                </div>
-                <div class="job-arrow">→</div>
-            </div>
+                <div class="cards-grid">
+                    <div class="feature-card">
+                        <div class="card-icon blue">🔎</div>
+                        <h3>For Job Seekers</h3>
+                        <p>Browse nearby shops, restaurants, and local vacancies. Apply directly without long resume processes.</p>
+                        <a href="login.html" class="card-link">Explore Jobs →</a>
+                    </div>
 
-            <div class="mini-status">
-                <span class="status-dot"></span> Applications can be tracked online
-            </div>
-        </div>
-    </div>
-</section>
+                    <div class="feature-card">
+                        <div class="card-icon purple">👨‍💼</div>
+                        <h3>For Employers</h3>
+                        <p>Post vacancies in 2 minutes. Receive local candidate profiles and manage your hiring decisions smoothly.</p>
+                        <a href="login.html" class="card-link">Hire Local Staff →</a>
+                    </div>
 
-<!-- =========================
-     QUICK OVERVIEW
-========================= -->
-<section class="overview-section">
-    <div class="section-heading">
-        <span class="section-label">PLATFORM OVERVIEW</span>
-        <h2>One platform. Two sides. One simple connection.</h2>
-        <p>Kaam Nearby brings local employers and job seekers together through a simple digital workflow.</p>
-    </div>
-
-    <div class="overview-grid">
-        <div class="overview-card blue-card">
-            <div class="overview-icon">🔎</div>
-            <h3>Job Seekers</h3>
-            <p>Search nearby opportunities, view job details, apply and track your application status.</p>
-            <a href="login.html" class="overview-link">Login to find work →</a>
-        </div>
-
-        <div class="overview-card purple-card">
-            <div class="overview-icon">👨‍💼</div>
-            <h3>Employers</h3>
-            <p>Post vacancies, receive applications, view applicants and manage hiring decisions.</p>
-            <a href="login.html" class="overview-link">Login to hire staff →</a>
-        </div>
-
-        <div class="overview-card green-card">
-            <div class="overview-icon">🤝</div>
-            <h3>Local Connection</h3>
-            <p>A simple bridge between nearby businesses and people looking for local work.</p>
-            <a href="login.html" class="overview-link">Get started →</a>
-        </div>
-    </div>
-</section>
-
-<!-- =========================
-     WORKFLOW DIAGRAM
-========================= -->
-<section class="workflow-section">
-    <div class="section-heading">
-        <span class="section-label">HOW IT WORKS</span>
-        <h2>Simple workflow for everyone</h2>
-    </div>
-
-    <div class="workflow-container">
-        <!-- JOB SEEKER -->
-        <div class="workflow-side seeker-side">
-            <div class="workflow-title">🔎 Job Seeker</div>
-            <div class="workflow-step"><span>01</span> Register / Login</div>
-            <div class="workflow-line"></div>
-            <div class="workflow-step"><span>02</span> Create Profile</div>
-            <div class="workflow-line"></div>
-            <div class="workflow-step"><span>03</span> Search Jobs</div>
-            <div class="workflow-line"></div>
-            <div class="workflow-step"><span>04</span> Apply</div>
-        </div>
-
-        <!-- CENTER -->
-        <div class="workflow-center">
-            <div class="workflow-circle">↔</div>
-            <div class="connection-line"></div>
-            <div class="decision-box">
-                <strong>Hiring Decision</strong>
-                <span>Accept / Reject</span>
-            </div>
-            <div class="connection-line"></div>
-            <div class="result-box">✓ Application Status Updated</div>
-        </div>
-
-        <!-- EMPLOYER -->
-        <div class="workflow-side employer-side">
-            <div class="workflow-title">👨‍💼 Employer</div>
-            <div class="workflow-step"><span>01</span> Register / Login</div>
-            <div class="workflow-line"></div>
-            <div class="workflow-step"><span>02</span> Post a Job</div>
-            <div class="workflow-line"></div>
-            <div class="workflow-step"><span>03</span> Receive Applications</div>
-            <div class="workflow-line"></div>
-            <div class="workflow-step"><span>04</span> Review Applicant</div>
-        </div>
-    </div>
-</section>
-
-<!-- =========================
-     FEATURES
-========================= -->
-<section class="features-section">
-    <div class="section-heading">
-        <span class="section-label">CORE FEATURES</span>
-        <h2>Everything needed for local hiring</h2>
-        <p>Simple features designed for both job seekers and local employers.</p>
-    </div>
-
-    <div class="professional-features">
-        <div class="pro-feature">
-            <div class="feature-number">01</div>
-            <div class="pro-feature-icon">🔐</div>
-            <h3>Registration & Login</h3>
-            <p>Separate access and dashboards for job seekers, employers and administrators.</p>
-        </div>
-
-        <div class="pro-feature">
-            <div class="feature-number">02</div>
-            <div class="pro-feature-icon">📍</div>
-            <h3>Nearby Job Search</h3>
-            <p>Search opportunities using job details and location.</p>
-        </div>
-
-        <div class="pro-feature">
-            <div class="feature-number">03</div>
-            <div class="pro-feature-icon">📄</div>
-            <h3>Online Applications</h3>
-            <p>Apply directly to available jobs and avoid repeated applications.</p>
-        </div>
-
-        <div class="pro-feature">
-            <div class="feature-number">04</div>
-            <div class="pro-feature-icon">👤</div>
-            <h3>Applicant Profiles</h3>
-            <p>Employers can review applicant information before making a decision.</p>
-        </div>
-
-        <div class="pro-feature">
-            <div class="feature-number">05</div>
-            <div class="pro-feature-icon">📊</div>
-            <h3>Application Tracking</h3>
-            <p>Job seekers can see whether an application is pending, accepted or rejected.</p>
-        </div>
-
-        <div class="pro-feature">
-            <div class="feature-number">06</div>
-            <div class="pro-feature-icon">⚡</div>
-            <h3>Simple Hiring Flow</h3>
-            <p>Employers can review applications and take hiring decisions from one place.</p>
-        </div>
-    </div>
-</section>
-
-<!-- =========================
-     MEET THE DEVELOPER
-========================= -->
-<section class="team-section">
-    <div class="section-heading">
-        <span class="section-label">MEET THE DEVELOPER</span>
-        <h2>The Person Behind Kaam Nearby</h2>
-        <p>Designed and developed to make local hiring simple and accessible.</p>
-    </div>
-
-    <div class="team-container">
-        <div class="team-card">
-            <div class="team-photo">
-                <img src="myyyy.jpeg" alt="Abhi Jain">
-            </div>
-
-            <div class="team-info">
-                <h3>Abhi Jain</h3>
-                <span class="team-role">Developer & Project Creator</span>
-                <p>Creator of Kaam Nearby — a platform designed to connect local job seekers with nearby shops, businesses and employers.</p>
-                <div class="team-tags">
-                    <span>💻 Developer</span>
-                    <span>🚀 Project Creator</span>
-                    <span>📍 Local Hiring</span>
+                    <div class="feature-card">
+                        <div class="card-icon green">📍</div>
+                        <h3>Nearby Matching</h3>
+                        <p>Find opportunities close to your home to minimize daily commute time and costs.</p>
+                        <a href="login.html" class="card-link">Get Started →</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
 
-<!-- =========================
-     CONTACT ME
-========================= -->
-<section class="contact-section">
-    <div class="section-heading">
-        <span class="section-label">GET IN TOUCH</span>
-        <h2>Want to connect with me?</h2>
-        <p>Have a question, suggestion or want to know more about Kaam Nearby? Feel free to contact me.</p>
-    </div>
-
-    <div class="contact-container">
-        <a href="mailto:heyyabhij29@gmail.com" class="contact-card">
-            <div class="contact-icon">📧</div>
-            <div class="contact-info">
-                <h3>Email Me</h3>
-                <p>Send me an email</p>
+        <!-- MEET THE DEVELOPER -->
+        <section class="developer-section">
+            <div class="container">
+                <div class="developer-card">
+                    <div class="developer-img-container">
+                        <img src="myyyy.jpeg" alt="Abhi Jain" class="developer-img">
+                        <div class="dev-badge">Creator 🚀</div>
+                    </div>
+                    <div class="developer-info">
+                        <span class="section-tag">MEET THE DEVELOPER</span>
+                        <h2>Abhi Jain</h2>
+                        <p class="dev-role">Developer & Creator of Kaam Nearby</p>
+                        <p class="dev-bio">
+                            "I created Kaam Nearby to bridge the gap between local job seekers and nearby business owners. My goal is to make local employment fast, transparent, and effortlessly accessible for everyone."
+                        </p>
+                        <div class="dev-tags">
+                            <span>💻 Full-Stack Dev</span>
+                            <span>📍 Local Growth</span>
+                            <span>⚡ UI/UX Enthusiast</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <span class="contact-arrow">→</span>
-        </a>
+        </section>
 
-        <a href="https://wa.me/" class="contact-card" target="_blank">
-            <div class="contact-icon">💬</div>
-            <div class="contact-info">
-                <h3>WhatsApp</h3>
-                <p>Chat with me directly</p>
+        <!-- CONTACT SECTION -->
+        <section class="contact-section">
+            <div class="container">
+                <div class="section-header center">
+                    <span class="section-tag">GET IN TOUCH</span>
+                    <h2>Have Questions or Suggestions?</h2>
+                    <p>Reach out directly for queries, collaboration, or feedback.</p>
+                </div>
+
+                <div class="contact-grid">
+                    <a href="mailto:heyyabhij29@gmail.com" class="contact-box">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-details">
+                            <h4>Email Me</h4>
+                            <p>heyyabhij29@gmail.com</p>
+                        </div>
+                    </a>
+
+                    <a href="https://wa.me/" target="_blank" class="contact-box">
+                        <div class="contact-icon">💬</div>
+                        <div class="contact-details">
+                            <h4>WhatsApp</h4>
+                            <p>Direct Message</p>
+                        </div>
+                    </a>
+
+                    <a href="tel:" class="contact-box">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-details">
+                            <h4>Call Me</h4>
+                            <p>Phone Support</p>
+                        </div>
+                    </a>
+                </div>
             </div>
-            <span class="contact-arrow">→</span>
-        </a>
+        </section>
 
-        <a href="tel:" class="contact-card">
-            <div class="contact-icon">📞</div>
-            <div class="contact-info">
-                <h3>Call Me</h3>
-                <p>Contact me by phone</p>
+        <!-- CTA BANNER -->
+        <section class="cta-banner">
+            <div class="container text-center">
+                <h2>Ready to explore nearby opportunities?</h2>
+                <p>Join Kaam Nearby today and connect with local talent or employers.</p>
+                <a href="login.html" class="btn-primary-lg white-btn">Login to Platform</a>
             </div>
-            <span class="contact-arrow">→</span>
-        </a>
-    </div>
-</section>
+        </section>
+    </main>
 
-<!-- =========================
-     CTA
-========================= -->
-<section class="final-cta">
-    <div>
-        <span class="section-label">GET STARTED</span>
-        <h2>Ready to find your next opportunity?</h2>
-        <p>Join Kaam Nearby and make local hiring simpler.</p>
-    </div>
-
-    <div class="cta-buttons">
-        <a href="login.html" class="primary-btn">
-            🔑 Login to Continue
-        </a>
-    </div>
-</section>
-
-</main>
-
-<!-- =========================
-     FOOTER
-========================= -->
-<footer class="professional-footer">
-    <div class="footer-main">
-        <div class="footer-brand">
-            <div class="brand footer-logo">
-                <span class="brand-icon">K</span>
-                <span>Kaam Nearby</span>
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <a href="index.html" class="brand-logo">
+                    <div class="logo-icon">K</div>
+                    <span class="logo-text">Kaam <span>Nearby</span></span>
+                </a>
+                <p>Connecting local talent with nearby businesses effortlessly.</p>
             </div>
-            <p>Connecting local job seekers with nearby employers.</p>
+            <div class="footer-links">
+                <a href="login.html">Login</a>
+            </div>
         </div>
-
-        <div class="footer-links">
-            <strong>Platform</strong>
-            <a href="login.html">Login</a>
+        <div class="footer-bottom text-center">
+            <p>© 2026 Kaam Nearby. All rights reserved.</p>
         </div>
+    </footer>
 
-        <div class="footer-links">
-            <strong>Features</strong>
-            <span>Job Search</span>
-            <span>Online Applications</span>
-            <span>Applicant Profiles</span>
-            <span>Application Tracking</span>
-        </div>
-    </div>
-
-    <div class="footer-bottom">
-        <span>© 2026 Kaam Nearby</span>
-        <span>Local Jobs & Staff Finder</span>
-    </div>
-</footer>
-
-<script src="script.js"></script>
-
+    <script src="script.js"></script>
 </body>
 </html>
