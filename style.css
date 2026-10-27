@@ -5166,3 +5166,107 @@ a {
         max-width: 100%;
     }
     }
+
+/* DEVELOPER / TEAM SECTION */
+.developer-section {
+    padding: 90px 0;
+    background: var(--bg-dark);
+    color: white;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.developer-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.developer-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--primary);
+}
+
+.developer-img-container {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    margin-bottom: 20px;
+}
+
+.developer-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--primary);
+}
+
+.avatar-placeholder {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.dev-badge {
+    position: absolute;
+    bottom: -6px;
+    right: -6px;
+    background: var(--primary);
+    color: white;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+.developer-info h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.dev-role {
+    color: var(--secondary);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.dev-bio {
+    color: #94A3B8;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 18px;
+    font-style: italic;
+}
+
+.dev-tags {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.dev-tags span {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
