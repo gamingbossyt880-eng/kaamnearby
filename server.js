@@ -5,11 +5,13 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-const User = require("./User");
-const Job = require("./Job");
-const Application = require("./Application");
-const Profile = require("./Profile");
+const User = require("./module/models/User");
+const Job = require("./module/models/Job");
+const Application = require("./module/models/Application");
+const Profile = require("./module/models/profile");
 
+// Support Ticket Model
+const SupportTicket = require("./module/models/SupportTicket");
 const app = express();
 
 const PORT = process.env.PORT || 5000;
